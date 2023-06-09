@@ -1,0 +1,237 @@
+
+  [{
+    "title": "Since FamCard is numberless, how do I use it for online purchases?",
+    "answer": "The physical FamCard is numberless but all the card details are safely stored on the FamPay App which can easily be copy pasted to make payments online. \n\nYou can find your card on the home screen. On swiping down, you get the details of the card which can be used on all the online platforms for purchases. Tap on the card number to copy it and paste wherever you want to spend."
+  },
+  {
+    "title": "Can the FamCard Me be used even after you turn 20+?",
+    "answer": "Yes! You can continue using the FamCard Me even after you turn 20+. This is one card that will never leave your side 💞"
+  },
+  {
+    "title": "Is FamCard  secure for transactions?",
+    "answer": "Security of our users and their money is of our first priority. FamCard is a prepaid card issued by IDFC FIRST Bank. \n\nFamCard has no numbers on the physical card, which makes it extremely secure. Since all the details are on your app, there's no fear of information theft even if you lose it!\n\nBoth physical and virtual card can be paused, blocked, and managed at your fingertips on the app anytime.\n\nNote: To ensure safety from your end, please do not share your OTP with anyone while making a transaction."
+  },
+  {
+    "title": "Can I cancel or return/exchange the FamCard Me that I ordered?",
+    "answer": "No, the FamCard Me cannot be cancelled, returned or exchanged. If you wanna change your doodle, you can block your existing card and order a new one. Besides, your FamCard Me will be so perfectly made for you that you wouldn't want to exchange it! 😍"
+  },
+  {
+    "title": "How to setup the FamCard Me once it arrives?",
+    "answer": "Once the FamCard Me reaches you, go ahead and activate it on the FamPay app by following the simple instructions that come within the packaging. Once activated, you can load your account with money and start using the card for all your payments!"
+  },
+  {
+    "title": "Are there any hidden fees or charges?",
+    "answer": "Absolutely not! FamPay and the FamCard Me have no hidden fees or charges, and requires no minimum balance to be maintained in your account."
+  },
+  {
+    "title": "Where is the FamCard Me accepted?",
+    "answer": "Literally everywhere! The FamCard can be used to make payments at all VISA accepted stores and merchants. From streaming services to your favourite stores - the sky is the limit. 🚀"
+  },
+  {
+    "title": "What will happen to my Rupay Card once the VISA FamCard is out?",
+    "answer": "Once you switch to the VISA FamCard, you will still have access to your virtual/physical RuPay FamCard. The new VISA FamCard will become your default card. However, you may continue to use your existing RuPay card if you like, by switching to it in the card settings of your FamPay app. You can choose between the two cards as per your convenience.\n\nBoth cards will however be linked to the one FamPay account you have, and hence transaction limits will remain the same (whether you use VISA/RuPay FamCard)!"
+  },
+  {
+    "title": "How many doodles can I use to design my FamCard Me?",
+    "answer": "The answer is: unlimited! You can use as many doodles and text elements as you like on your FamCard Me! Make sure you resize and position them for a look that suits you best."
+  },
+  {
+    "title": "Why FamCard Me?",
+    "answer": "The FamCard Me is not just a card, it's a story. It's India's first ever card with doodles, made exclusively for teens. Aside from being super personalised, it is completely contactless with the Tap and Pay feature, and has a wide acceptance, thanks to the VISA network. It is also the most rewarding card for teens, with 4X rewards on every single spend and subscriptions, offers from your favourite brands!"
+  },
+  {
+    "title": "What are we looking for in an ideal Brand Ambassador?",
+    "answer": "We want teens who are Creators, Trend-setters, Ideators and Change-makers. By being a brand ambassador, you will be able to start trends amongst your network - trend of cashless payments in teens, the trend of being financially responsible and so on. That’s why we are looking for a passion to be an influence more than an influencer."
+  },
+  {
+    "title": "Who is eligible for becoming a Brand Ambassador?",
+    "answer": "Any school-going student (age 13-18) with access to a smartphone/laptop and a social media profile would be the minimum eligibility criteria."
+  },
+  {
+    "title": "Do I have to pay anything to join the Brand Ambassador Program?",
+    "answer": "We, at FamPay, strive to build a financially aware and empowered community of teenagers and in that pursuit, the program is FREE for all the applicants with a shiny perks’ list."
+  },
+  {
+    "title": "Will it hamper my school work?",
+    "answer": "Not at all! In fact, it’s a great way to score some extra credits on your extra-curricular in your resume!"
+  },
+  {
+    "title": "How much time do I need to spend every day?",
+    "answer": "At the most, you will have to spend 2-3 hours every day. So, pretty easy-peasy!"
+  },
+  {
+    "title": "What will I have to do as an Ambassador?",
+    "answer": "As our Brand Ambassador, you will be promoting our brand in your networks (online and offline). You will help us grow our brand, help us reach more teenagers and also get to feature in our campaign photos/ videos."
+  },
+  {
+    "title": "What is the program duration?",
+    "answer": "Depending on the applicant’s availability, the program duration will be 2 weeks."
+  },
+  {
+    "title": "What perks will I get as a part of the program?",
+    "answer": "Other than a chance to win a paid internship for school students with FamPay, these are all the perks you get on joining and successfully completing the program:\n- Free FamCard (worth Rs. 500)\n- MasterClass taken by FamPay's social media expert\n- Exclusive discounts and offers from brands you love\n- Extra pocket money (Refer your friends and earn on downloads)\n- Chance to represent a brand! (Feature in our brand and marketing campaigns)\n\nAdditional Perks \n- Certificate on completion\n- Goodies and Merchandises\n- Learning sessions\n- Community access"
+  }
+,
+
+
+
+  {
+    "title": "How can I join the Teenfluencer Program?",
+    "answer": "To join for the program, follow the following steps:\nStep 1: Down the FamPay app from get.fampay.in\nStep 2: Sign up on the app\nStep 3: Fill out the influencer application form"
+  },
+  {
+    "title": "What is the Teenfluencer Program?",
+    "answer": "FamPay’s Teenfluencer is one of its kind program where you can become a Brand Ambassador for India's first payments app for teenagers. With this program, we aim to create a community of trendsetting teenagers who have the ability to positively influence their peers to start a trend rather than just follow it! \n\nBecoming a Teenfluencer gets you access to an exclusive community of like-minded people who are excited to build their influencing skills and grow together."
+  },
+  {
+    "title": "Blog",
+    "answer": "fampay.in/blog"
+  },
+  {
+    "title": "Twitter",
+    "answer": "twitter.com/fampayindia"
+  },
+  {
+    "title": "LinkedIn",
+    "answer": "linkedin.com/company/fampay"
+  },
+  {
+    "title": "Facebook",
+    "answer": "facebook.com/fampay.in"
+  },
+  {
+    "title": "Instagram",
+    "answer": "instagram.com/fampay.in"
+  },
+  {
+    "title": "Email-Id",
+    "answer": "support@fampay.in"
+  },
+  {
+    "title": "What happens if I lose my card?",
+    "answer": "First of all, we hope that it doesn't happen. But if it does, don't worry.\n \n- As we issue numberless cards, your card details can't be traced or misused. \n- You can block your card instantly from the app. No transactions will be processed once your card is blocked as it gets deactivated permanently. \n- You will have to place a fresh order for your new FamCard."
+  },
+  {
+    "title": "What is pausing the card?",
+    "answer": "Pausing the card is deactivating the card temporarily. The card will be inactive until you resume it back."
+  },
+  {
+    "title": "What is the price of the FamCard?",
+    "answer": "The physical FamCard Me is originally priced at Rs.399*, whereas the FamCard is originally priced at Rs. 199*\nThe virtual FamCard is free for everyone.\n* Prices may vary based on offers and discounts. Do check out the card screen to know the latest offers on the FamCard!"
+  }
+,
+  {
+    "title": "How long does it take for the card to get delivered?",
+    "answer": "Once you place the card order, it will be delivered to you within 7-10 business days."
+  },
+  {
+    "title": "Once my card order is placed, how can I track my order?",
+    "answer": "You will be able to track your FamCard on the card screen. Just click on \"Track order\" and you can watch your FamCard until it reaches your doorstep."
+  },
+  {
+    "title": "I am a parent. Can I order the FamCard for my teen?",
+    "answer": "Yes, you can order the FamCard for your kid but not through your app. We would need your teen to be onboard with us. Invite your teen on the app, help them in setting up the profile and completing their KYC and that's it. You can order the FamCard for your teen from their account."
+  },
+  {
+    "title": "How can I order the FamCard?",
+    "answer": "You can order the card in 4 simple steps:\n\n- Click on \"Order Card\" on the card screen\n- Personalise your card with your details\n- Fill in your delivery address\n- Pay for the card and place your order"
+  },
+  {
+    "title": "Who can order the FamCard?",
+    "answer": "FamCard is available to teenagers who are 20 and below.\n\nFor teens below the age of 18:\n- They must have completed their own KYC\n- They must have their parent's permission (consent) to use FamPay"
+  },
+  {
+    "title": "How can I become a Friend of Fam?",
+    "answer": "There are no specific eligibility criteria except that you need to be passionate. Our selection process consists of a couple of interviews and the most driven kids are hand-picked into the community."
+  },
+  {
+    "title": "What benefits are enjoyed by Friends of Fam?",
+    "answer": "- Certificate and recommendations\n- Exclusive FamPay swag kit\n- Featured on FamPay Instagram\n- Sponsored social outings"
+  },
+  {
+    "title": "What activities are organised for Friends of Fam?",
+    "answer": "FamPay aims to achieve the role of catalyst in furthering the motives for which Friends of Fam stand for through various online and offline events, volunteering opportunities and mentoring."
+  }
+,
+  {
+    "title": "Who are Friends of Fam?",
+    "answer": "Friends of Fam is a community of driven teenagers who channelize their hunger for growth into tangible endeavors early on in life."
+  },
+  {
+    "title": "Who is the owner of the family?",
+    "answer": "Only adults can be the owner of the family. So the adult that gets invited to the family and completes at least the minimum KYC verification first before all the other invited adults, becomes the owner."
+  },
+  {
+    "title": "What is my family profile?",
+    "answer": "Your family profile includes a custom family name, display and list of all the members."
+  },
+  {
+    "title": "I am a minor. How should I add money to my FamPay account?",
+    "answer": "As a minor, you cannot add money to your FamPay account. However, you can nudge/request a friend or request from your Parents/Guardian on FamPay to load your prepaid account. Growing up will come soon to you."
+  },
+  {
+    "title": "How do I get started on FamPay?",
+    "answer": "Quite simple actually!\n\n1. Download the app and setup your account with the necessary KYC verification. \n2. Order your FamCard\n3. Request money from parents\n4. Start saving / shopping on the app (you can use FamCard or Scan and pay)\n5. You can also send money to friends and help a friend in need."
+  },
+  {
+    "title": "Why do I need FamPay?",
+    "answer": "Do the following scenarios look relatable to you? \n- I have to carry enough cash with me all the time, in case I have to get something on the way back home\n- My parents run out of cash to give to me when I need to go out. \n- I have to keep borrowing money from friends when I fall short of cash\n- I have to often ask my parents for their OTP whenever I use the card\n- I am dependent on my parents for online/offline payments. \n\nThere can be many more such scenarios. If these look relatable, then FamPay can help you. \n\nWith FamPay, you get your own FamCard. You can get your parents to load your FamPay prepaid account anytime online, and you can pay online/offline, anytime, anywhere."
+  }
+,
+  {
+    "title": "Is it safe? How?",
+    "answer": "Yes, FamPay is secure. \nWe don't blame you for thinking twice security, especially when it comes to trusting someone, or something with your money. Allow us to explain how FamPay is safe and secure for teens and families!\n\n- We have 100% end to end secured systems\n- We are partnered with IDFC First Bank (issuer bank)\n- The accounts on FamPay are not linked to any bank account\n- We offer maximum transparency and there are absolutely no hidden charges\n- The FamCard has no numbers printed on the physical card, instead it is stored on the app, which makes it very secure.\n- There’s no fear of card information getting misused in case it gets stolen or lost and the card can be paused, blocked and managed at your fingertips on the app.\n- All transactions are device-lock protected\n- Parents can choose to monitor your child's transactions\n- Teens cannot add money by themselves, they can only request for money."
+  },
+  {
+    "title": "What are the perks of using FamPay?",
+    "answer": "So, you wanna know the perks of using FamPay? Disclaimer: Its a long answer! 😉\n\n1. Say goodbye to cash - With FamPay, you get access to your FamCard, in just 2 mins without the need of a bank account. You can use FamCard for payments, it matches your vibe and style and you can get it personalized too! You can transfer money instantly and track your expenses on their fingertips!\n\n2. Earn while you spend - With exciting reward schemes and discount and cashback offers on your favourite brands, FamPay gives more than you expected. You can also get brownie points (FamCoins) for every activity you do on the app which can be redeemed when you shop the next time!\n\n3. Financial Independence- Having the independence of making payments by yourself, also gets you to start learning and exploring more about payments. With FamPay, you can save on the app, and also track your expenses, so you never have to worry about remembering where you are spending.\n\n4. Financial Literacy- Apart from just helping you save and track money, we also help you understand the Do’s and Don’ts of Payments or why some of your payments get stuck and what should you do in such situations. We understand that this is your first step towards digital payments and we want to be as helpful as possible.\n\n5. Community of Like-minded teens- Most other popular payments apps do not focus on just teens, they focus on the overall segment of users. But FamPay is specially made for teenagers, first of its kind in India. In order to give you an amazing experience, we have created a community of teens, where you can participate, learn, earn and grow! Along with workshops, programs and events tailor made for you, we also provide activities and information that you will find interesting. In our app, we have launched ‘Club’ for teens like you, where you can get all updates on our community, play exciting quizzes and also get information about other teen ventures!"
+  }
+,
+  {
+    "title": "Can my kid add money?",
+    "answer": "Your kid can request money through UPI. They can also, add money using debit cards and netbanking after taking your permission."
+  },
+  {
+    "title": "Can I know where the card money was expended?",
+    "answer": "Yes, you can view the names of FamPay friends and registered names of merchants for transactions made with them."
+  },
+  {
+    "title": "How do I get started on FamPay?",
+    "answer": "Its really simple to start using FamPay. \n- Download the app, and setup your account with the necessary KYC verification. \n- Invite your child and get them to complete their KYC verification too. \n- Load their FamPay prepaid account online instead of giving cash/your cards/OTPs and get them to spend, save and learn!"
+  },
+  {
+    "title": "Why do I need FamPay?",
+    "answer": "Have you ever had to - \n\n- search for the OTP in the middle of a meeting to give to your teen who is shopping online/ offline?\n- run to the ATM when you ran out of cash to give to your teen for their school project/book fees? \n- worry about giving your debit/credit card to your teen when they were going on a class trip? \n\nIf yes, FamPay can help solve all your problems. \nWith FamPay, your teen gets their own FamCard (numberless prepaid card). You can load their account anytime online, and they can shop online/offline, anytime, anywhere, under your supervision. You can track their expenses as well."
+  },
+  {
+    "title": "What is FamPay's mission?",
+    "answer": "Over 300 million adults (age 18+) in India pay digitally, but 250 million minors (age 11-18) can not, despite having smartphones, internet and being tech savvy. Minors are still forced to use cash or use their parents debit/credit cards for payments. Over 80% of teens love shopping online but 67% of them are forced to use cash and 52% use parents cards/ payment apps.\n\nFamPay is solving this problem by helping teens make payments online/offline independently under their parents supervision, without the need of a bank account. As part of our mission, we are raising a new, financially aware generation of Indians who understand the fundamentals of personal finance and are capable of making decisions in their best long term interest."
+  },
+  {
+    "title": "Who is it for?",
+    "answer": "FamPay is specially designed for teens and their families. Anyone of age 11 or above is eligible to setup a FamPay account. \nTeens (age 11-20) and Parents of Teens (age 35+) can create a FamPay account without an invite. If you are between 21 to 34 years of age, you need to have an invite to create a FamPay account."
+  }
+,
+  {
+    "title": "What is FamPay?",
+    "answer": "FamPay offers prepaid card payments for teenagers.\nUp until now, only adults (age 18+) could make digital payments using online/mobile banking or payments apps. With FamPay and its numberless prepaid card, minors (below 18) can successfully make online and offline payments without the need to set up a bank account."
+  },
+  {
+    "title": "How do I use the card at offline stores?",
+    "answer": "To use the card at offline stores, you need to order a physical card for yourself which can be used to swipe or tap for payments. Also, it's quite cool to carry. ;)"
+  },
+  {
+    "title": "Where can I use FamCard?",
+    "answer": "You can swipe your FamCard or use the Tap N Pay feature in person or transfer money digitally on all your favourite sites, such as Amazon, Netflix, Zomato, Swiggy,  etc.\nBook your movie tickets, get a cab, buy a gift, grab a snack! Wherever there's a fun-way, there's FamPay!"
+  },
+  {
+    "title": "What makes FamCard so special?",
+    "answer": "Lots of things, but here goes a few!\n\nPersonalized and Trendy: Teens can get their favourite doodles and names personalized on the FamCard in a signature-like style. So, if you wanna be named Batman, then you can get it printed on your card!\n\nNumberless and Secure: FamCard has no numbers printed on the physical card which makes it very secure. The card number and other details (expiry date, CVV) are stored securely within the FamPay app instead of being printed on the physical card. There’s no fear of card information getting disclosed in case it gets stolen or lost and the card can be paused, blocked and managed at fingertips on the app. Additionally, the card details within the app can be accessed only with device lock like fingerprint, face ID, pattern lock or PIN.\n\nContactless and Safe: It also has the feature of Tap N Pay, through which teens can transact at offline merchants (upto INR.2000) by tapping their card against the POS (Point of Sale) machines."
+  },
+  {
+    "title": "What is a FamCard?",
+    "answer": "FamCard is a numberless prepaid card cobranded and issued by IDFC FIRST bank. \n\nAs soon as you create an account with us, you'll be able to access your card in the app for all your online purchases. To swipe the card at offline merchants, you need to place an order for the physical card."
+  }
+]
+
+
