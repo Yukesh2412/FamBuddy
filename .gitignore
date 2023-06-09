@@ -1,3 +1,4 @@
 node_modules/
 famdoc/
 webscrape/
+.env
