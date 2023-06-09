@@ -24,15 +24,12 @@ const Chat = ({}) => {
     ]);
   }, []);
 
-  // Create a new websocket instance
   const ws = new WebSocket('ws://192.168.1.19:3000');
 
-  // Handle the connection open event
   ws.onopen = () => {
     console.log('connected to websocket');
   };
 
-  // Handle the message event
   ws.onmessage = e => {
     var response = e.data;
     var data = [
@@ -48,25 +45,20 @@ const Chat = ({}) => {
         },
       },
     ];
-    // Append the message to the state
     setMessages(previousMessages => GiftedChat.append(previousMessages, data));
     setisTyping(false);
   };
 
-  // Handle the error event
   ws.onerror = e => {
     console.log('websocket error', e.message);
   };
 
-  // Handle the connection close event
   ws.onclose = e => {
     console.log('websocket closed', e.code, e.reason);
   };
 
   const onSend = useCallback((messages = []) => {
-    // Send the message to the server as JSON
     ws.send(JSON.stringify(messages[0]));
-    // Update the state with the sent message
     setMessages(previousMessages =>
       GiftedChat.append(previousMessages, messages),
     );
