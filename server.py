@@ -34,20 +34,11 @@ def extract_data(root_path: str) -> list:
 
 def extract_txt(root_path: str) -> list:
     print(f'Extracting data from txt files at: {root_path}')
-    # open the text file
     f = open('./cleandata.txt', 'r')
-
-    # read the JSON data
     data = json.load(f)
-
-    # create an empty list
     pages = []
     url = 'https://famapp.in'
-
-
-    # loop through each dictionary in data
     for d in data:
-        # get the title value
         title = d['title']
         description=d['answer']
         # append it to titles list
@@ -60,10 +51,7 @@ def extract_txt(root_path: str) -> list:
             
         })
 
-    # close the file
     f.close()
-
-    # print the titles list
     return pages
 
 def split_data(pages: list) -> tuple:
@@ -111,7 +99,6 @@ def main():
 
     docs, metadata = split_data(pages)
     
-
     embeddings = get_embeddings(docs)
 
     db = {'vectors':[]}
