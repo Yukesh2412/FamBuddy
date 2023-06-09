@@ -111,9 +111,9 @@ async function ask(user_question) {
 wss.on("connection", function connection(ws) {
   ws.on("message", async function incoming(data) {
     console.log("TYPING");
-    ws.send("typing..");
+    // ws.send("typing..");
     var msg = await ask(data.toString());
-    ws.send("typing..");
+    // ws.send("typing..");
     ws.send(msg);
   });
 });
