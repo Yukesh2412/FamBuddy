@@ -1,24 +1,26 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const axios = require("axios");
 const { Configuration, OpenAIApi } = require("openai");
 const http = require("http");
 const WebSocket = require("ws");
-const port = 3000;
 const server = http.createServer(express);
+
 const wss = new WebSocket.Server({ server });
 
 const configuration = new Configuration({
-  apiKey: "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",
+  apiKey: process.env.OPENAI_API,
 });
 const openai = new OpenAIApi(configuration);
+const port = 3000 || process.env.PORT;
 
 function query_database(query_prompt) {
-  const url = "https://fam-bb05ce2.svc.asia-northeast1-gcp.pinecone.io/query";
+  const url = process.env.PINECONE_URL;
   const headers = {
     "Content-Type": "application/json",
     accept: "application/json",
-    "Api-Key": "d6fbd995-a60c-423a-b071-c7b4d3b05f93",
+    "Api-Key": process.env.PINECONE_API,
   };
   const data = {
     vector: query_prompt,
@@ -107,6 +109,8 @@ async function ask(user_question) {
     return "Sorry, something went wrong.";
   }
 }
+
+// console.log(ask("what is fam"));
 
 wss.on("connection", function connection(ws) {
   ws.on("message", async function incoming(data) {
