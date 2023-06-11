@@ -44,40 +44,42 @@ function query_database(query_prompt) {
 }
 
 function apply_prompt_template(question) {
-  const prompt = ` Understand  whether it is start of chat or follow up question, if start of chat, then follow this
-     and Understand the question first ${question}and
-      Understand the context of all data above and this is the question=${question} and answer it as FampApp support team. Provide the link of this information(if available) as "to find out more".
-      if its a follow up question, understand all previous chat's context which relevant to fampay queries.
-      You should tone in supportive,problem solving, more human, friendly, humourous and easy. (Note: Response should be precise,clear,in points and emojis if possible).
-  If question is irrelevant to fampay and related information, then politefully ignore or change the topic.
-  `;
-  //   const prompt = ` if question "${question}" is irrelevant to FamPay, then politely ignore or change the topic. if it is ending note then close the chat. Iif not, then Understand and answer the context of all data above and answer it as FampApp support team. Provide the link of this information(if available) as "to find out more".
-  //  . Be informative, supportive, and enthusiastic about FamPay's spending account, UPI, card, and rewards. Use simple, precise and clear language and avoid jargon or technical terms. Be creative and funny with emojis.  .`;
-
-  //   const prompt = `
-  // If the question ${question} is irrelevant to FamPay, then politely ignore or change the topic. For example, you can say "Sorry, I can't help you with that. But I can tell you more about FamPay's awesome features. Do you want to know more?"
-  // Else if the question ${question} is an ending note, then close the chat. For example, you can say "Thank you for chatting with me. I hope you have a great day. Bye for now!"
-  // Else if the question ${question} is relevant to FamPay, then understand and answer the context of all data above and answer it as FampApp support team. Provide the link of this information (if available) as "to find out more". Be informative, supportive, and enthusiastic about FamPay's spending account, UPI, card, and rewards. Use simple, precise and clear language and avoid jargon or technical terms. Be creative and funny with emojis. For example, you can say "FamPay is the best way to spend your money online and offline. You can get your own UPI and card without a bank account and earn amazing rewards on every transaction. To find out more, visit famapp.in or download the app from the Play Store or App Store. Trust me, you won't regret it! 😎"
+  // const prompt = `Assume you are chatbot and Understand the context of data given and this is the question=${question}. Provide the link of this information(if available) as "to find out more".
+  //     if its a follow up question, understand all previous chat's context which relevant to fampay queries.
+  //     You should tone in supportive,problem solving, more human, friendly, humourous and easy. (Note: Response should be precise,clear,in points and emojis if possible).
+  // If question is irrelevant to fampay and related information, then politefully ignore or change the topic.
   // `;
+
+  const prompt = `based on the above context(refer the context it as Fampay FAQ), answer the question: ${question}, also provide the source of this information(if available) as "to find out more".
+ Be supportive,problem solving, more human, friendly, humourous and easy. Use simple, precise and clear language and avoid jargon or technical terms. Be creative and funny with emojis.
+  If the question is irrelevant to fampay and related information, then politefully ignore or change the topic.
+  `;
 
   return prompt;
 }
 
 async function call_chatgpt_api(user_question, chunks) {
-  const messages = chunks.map((chunk) => ({
-    role: "user",
-    content: chunk,
-  }));
+  var messages = chunks.map((chunk) => {
+    if (chunk.docs) {
+      return {
+        role: "user",
+        content: chunk.docs,
+      };
+    }
+    return null;
+  });
+  messages = messages.filter((item) => item !== null);
 
   const question = apply_prompt_template(user_question);
   messages.push({ role: "user", content: question });
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: messages,
-    max_tokens: 1024,
+    max_tokens: 512,
     temperature: 0.7,
   });
 
+  console.log(messages);
   return response;
 }
 
@@ -98,7 +100,7 @@ async function ask(user_question) {
     // Loop through the matches in the chunks response and get the metadata for each match
     for (let match of chunks_response.matches) {
       let metadata = match.metadata || {};
-      chunks.push(String(metadata));
+      chunks.push(metadata);
     }
 
     const response = await call_chatgpt_api(user_question, chunks);

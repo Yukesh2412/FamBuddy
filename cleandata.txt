@@ -72,9 +72,6 @@
     "answer": "Other than a chance to win a paid internship for school students with FamPay, these are all the perks you get on joining and successfully completing the program:\n- Free FamCard (worth Rs. 500)\n- MasterClass taken by FamPay's social media expert\n- Exclusive discounts and offers from brands you love\n- Extra pocket money (Refer your friends and earn on downloads)\n- Chance to represent a brand! (Feature in our brand and marketing campaigns)\n\nAdditional Perks \n- Certificate on completion\n- Goodies and Merchandises\n- Learning sessions\n- Community access"
   }
 ,
-
-
-
   {
     "title": "How can I join the Teenfluencer Program?",
     "answer": "To join for the program, follow the following steps:\nStep 1: Down the FamPay app from get.fampay.in\nStep 2: Sign up on the app\nStep 3: Fill out the influencer application form"
@@ -85,27 +82,27 @@
   },
   {
     "title": "Blog",
-    "answer": "fampay.in/blog"
+    "answer": "https://fampay.in/blog"
   },
   {
     "title": "Twitter",
-    "answer": "twitter.com/fampayindia"
+    "answer": "https://twitter.com/fampayindia"
   },
   {
     "title": "LinkedIn",
-    "answer": "linkedin.com/company/fampay"
+    "answer": "https://linkedin.com/company/fampay"
   },
   {
     "title": "Facebook",
-    "answer": "facebook.com/fampay.in"
+    "answer": "https://facebook.com/fampay.in"
   },
   {
     "title": "Instagram",
-    "answer": "instagram.com/fampay.in"
+    "answer": "https://instagram.com/fampay.in"
   },
   {
     "title": "Email-Id",
-    "answer": "support@fampay.in"
+    "answer": "https://support@fampay.in"
   },
   {
     "title": "What happens if I lose my card?",
@@ -213,7 +210,7 @@
   }
 ,
   {
-    "title": "What is FamPay?",
+    "title": "What is fampay?",
     "answer": "FamPay offers prepaid card payments for teenagers.\nUp until now, only adults (age 18+) could make digital payments using online/mobile banking or payments apps. With FamPay and its numberless prepaid card, minors (below 18) can successfully make online and offline payments without the need to set up a bank account."
   },
   {
@@ -231,6 +228,11 @@
   {
     "title": "What is a FamCard?",
     "answer": "FamCard is a numberless prepaid card cobranded and issued by IDFC FIRST bank. \n\nAs soon as you create an account with us, you'll be able to access your card in the app for all your online purchases. To swipe the card at offline merchants, you need to place an order for the physical card."
+  },
+  {
+    "title":"What is fambuddy?",
+    "answer":"FamBuddy is your cool chatbot from FamPay, the ultimate neobank for teens in India. With FamPay, you can get a prepaid card and UPI to pay for anything you want, no bank account needed. FamBuddy can help you with all things FamPay, like creating your account, sending money, earning rewards, and more. FamBuddy can also chat with you about your queries,doubts,information and guidance regarding Fampay. FamBuddy is the brainchild of Yukesh, a passionate software developer from India who wanted to make FamPay more fun and friendly for teens.
+"
   }
 ]
 

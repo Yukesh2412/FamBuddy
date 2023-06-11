@@ -1,4 +1,6 @@
 node_modules/
 famdoc/
 webscrape/
+cleandata.txt
 .env
+blog/
