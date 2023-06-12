@@ -81,28 +81,8 @@
     "answer": "FamPay’s Teenfluencer is one of its kind program where you can become a Brand Ambassador for India's first payments app for teenagers. With this program, we aim to create a community of trendsetting teenagers who have the ability to positively influence their peers to start a trend rather than just follow it! \n\nBecoming a Teenfluencer gets you access to an exclusive community of like-minded people who are excited to build their influencing skills and grow together."
   },
   {
-    "title": "Blog",
-    "answer": "https://fampay.in/blog"
-  },
-  {
-    "title": "Twitter",
-    "answer": "https://twitter.com/fampayindia"
-  },
-  {
-    "title": "LinkedIn",
-    "answer": "https://linkedin.com/company/fampay"
-  },
-  {
-    "title": "Facebook",
-    "answer": "https://facebook.com/fampay.in"
-  },
-  {
-    "title": "Instagram",
-    "answer": "https://instagram.com/fampay.in"
-  },
-  {
-    "title": "Email-Id",
-    "answer": "https://support@fampay.in"
+    "title": "Blog | Twitter | LinkedIn | Facebook | Instagram | Email-ID",
+    "answer": "Blog-https://fampay.in/blog, twitter-https://twitter.com/fampayindia, facebook-https://facebook.com/fampay.in, instagram-https://instagram.com/fampay.in, emailID-https://support@fampay.in"
   },
   {
     "title": "What happens if I lose my card?",
@@ -231,9 +211,145 @@
   },
   {
     "title":"What is fambuddy?",
-    "answer":"FamBuddy is your cool chatbot from FamPay, the ultimate neobank for teens in India. With FamPay, you can get a prepaid card and UPI to pay for anything you want, no bank account needed. FamBuddy can help you with all things FamPay, like creating your account, sending money, earning rewards, and more. FamBuddy can also chat with you about your queries,doubts,information and guidance regarding Fampay. FamBuddy is the brainchild of Yukesh, a passionate software developer from India who wanted to make FamPay more fun and friendly for teens.
-"
+    "answer":"FamBuddy is your cool chatbot from FamPay, the ultimate neobank for teens in India. With FamPay, you can get a prepaid card and UPI to pay for anything you want, no bank account needed. FamBuddy can help you with all things FamPay, like creating your account, sending money, earning rewards, and more. FamBuddy can also chat with you about your queries,doubts,information and guidance regarding Fampay. FamBuddy is the brainchild of Yukesh, a passionate software developer from India who wanted to make FamPay more fun and friendly for teens."
+  },
+  {
+    "title": "What is IDFC FIRST Bank - FamPay?",
+    "answer": "IDFC FIRST Bank - FamPay is a payments platform for teenagers. Users below the age of 18 can create an account on IDFC FIRST Bannk - FamPay to send or receive money from their friends and family, do digital payments via a prepaid card and scan through UPI."
+  },
+  {
+    "title": "Who is it for?",
+    "answer": "Anyone who is 11 years and above can sign up to IDFC FIRST Bank - FamPay services."
+  },
+  {
+    "title": "Can anyone sign up without verifying through KYC?",
+    "answer": "No. Every user has to do KYC as per the RBI guidelines."
+  },
+  {
+    "title": "How do I setup my account?",
+    "answer": "You can open a IDFC FIRST Bank - FamPay account through the following steps: \n- Download the mobile app on Android \n- Verify your phone number and register by filling in the personal information requested \n- If you are under 18, you are requested to invite your parents to the family and once they sign up, you'll proceed to KYC. \n- If you are an adult, you'll be asked to complete your KYC. \n- KYC can be done by verifying your government issued ID as per regulatory guidelines. \n- Your account has been setup. You can now fund your IDFC FIRST Bank - FamPay account and get cashless."
+  },
+  {
+    "title": "What type of payments can a user do through IDFC FIRST Bank - FamPay?",
+    "answer": "With IDFC FIRST Bank - FamPay, a user can: \n- Scan and UPI QR code and pay \n- Do P2P payments with their contacts on FamPay \n- Use our prepaid card for online and in-store purchases"
+  },
+  {
+    "title": "What is IDFC FIRST Bank - FamPool?",
+    "answer": "IDFC FIRST Bank - FamPool is the sub-wallet for your family. An adult (who is the owner of the sub-wallet) in the family can add money to the IDFC FIRST Bank - FamPool account. Owner can issue 2 add-on cards to it’s family members. Add-on card holders can use the balance in FamPool to spend wherever they like."
+  },
+  {
+    "title": "What is IDFC FIRST Bank - FamPay Prepaid Card",
+    "answer": "IDFC FIRST Bank- Fampay Prepaid Card is a prepaid card specially designed for FamPay users. As soon as you create an account, you'll be able to access your virtual card on the app for all your online purchases. To swipe the card at offline merchants, you need to place an order for the physical card."
+  },
+  {
+    "title": "Can a user open an account in various devices at the same time?",
+    "answer": "No, a user can log into his/her account in one device only at a time."
+  },
+  {
+    "title": "Can I have multiple accounts through the same phone number?",
+    "answer": "No, you cannot because a phone number is uniquely identified with an account."
+  },
+  {
+    "title": "Can I pause my account with FamPay?",
+    "answer": "You can pause your IDFC FIRST Bank-Fampay Prepaid Card so that no transactions are enabled through it."
+  },
+  {
+    "title": "Is there an offline method for getting the KYC done?",
+    "answer": "Our KYC verification procedures are conducted online."
+  },
+  {
+    "title": "My KYC request got rejected.",
+    "answer": "If your KYC request gets rejected, then you are eligible for a min-KYC procedure."
+  },
+  {
+    "title": "Does every user have to get the KYC done?",
+    "answer": "Yes, it is mandatory for every IDFC FIRST Bank - FamPay user to get the KYC done as per regulatory guidelines. Please follow the steps on the IDFC FIRST Bank FamPay application to complete the KYC."
+  },
+  {
+    "title": "What are the documents required for KYC?",
+    "answer": "KYC can be easily processed using any of the following documents of the user-, Voter ID, Passport, Driving License or PAN Card or any other government issued ID"
+  },
+  {
+    "title": "What are the limits for a minimum KYC account?",
+    "answer": "With a minimum KYC you can: \n- Transact upto INR 10,000 per month \n- Transact upto INR 1,00,000 per year \n- Cannot do P2P transfers"
+  },
+  {
+    "title": "What are the limits for an Full KYC account?",
+    "answer": "With an Full KYC account, you can: \n- Transact upto INR 1,00,000 per month \n- Transact upto INR 2,00,000 per year \n- Can perform P2P transfers"
+  },
+  {
+    "title": "Where can I use IDFC FIRST Bank - Fampay Prepaid Card ?",
+    "answer": "IDFC FIRST Bank - Fampay Prepaid Card can be used at any merchant (POS & ECOM) who accepts Rupay cards."
+  },
+  {
+    "title": "How to use IDFC FIRST Bank - Fampay Prepaid Card for online purchases?",
+    "answer": "You can find your card on the home screen. On swiping down, you get the details of the card which can be used on all the online platforms for purchases. Tap on the card number to copy it and paste wherever you want to spend."
+  },
+  
+  {
+    "title": "What is the Pin for the card?",
+    "answer": "Pin for the card is kept for your security. Please do not share or forget this. Pin will be used for authentication of payments when you swipe the IDFC FIRST Bank - Fampay Prepaid Card offline."
+  },
+  {
+    "title": "Can I pause or block my card?",
+    "answer": "Yes, you can do it on your fingertips using the app whenever you feel like it. While blocking your card will discard your card permanently, pausing will deactivate your card until you resume it. No transactions will be processed when the card is deactivated."
+  },
+  {
+    "title": "Why is there no number on the physical card?",
+    "answer": "Because it is much more secure in case someone else gets the card. You can get the card details on the app which can be used for online purchases."
+  },
+  {
+    "title": "How to order a physical card?",
+    "answer": "You can order the card from the app. Just go on the card screen, click on order card, fill in your details and we'll deliver it at your doorstep."
+  },
+  {
+    "title": "I lost my card. What do I do?",
+    "answer": "You can block the card from the app anytime and apply for a new one."
+  },
+  {
+    "title": "How can I create a IDFC FIRST Bank - FamPool account?",
+    "answer": "Post Creation of the family, adult in the family can create the IDFC FIRST Bank - Fampool account and becomes the owner of the account."
+  },
+  {
+    "title": "Can a minor add money?",
+    "answer": "No, a minor can not add money. They can only request their parents to load the personal or FamPool account and receive money from others on FamPay."
+  },
+  {
+    "title": "Who can spend money from the IDFC FIRST Bank - FamPool account?",
+    "answer": "The family members added by the KYCed adult owner to issue the add-on cards can use the FamPool account to spend."
+  },
+  {
+    "title": "How many members can be added in the IDFC FIRST Bank - FamPool account?",
+    "answer": "Upto 2 minors can be added to the IDFC FIRST Bank - FamPool account to issue the add-on cards."
+  },
+  {
+    "title": "Can everyone view the transactions of IDFC FIRST Bank - FamPool account?",
+    "answer": "The transactions that are made out of IDFC FIRST Bank - FamPool account can be viewed by all the members of FamPool account."
+  },
+  {
+    "title": "Can I transfer money from IDFC FIRST Bank - FamPool account to personal account?",
+    "answer": "if you are a minor, then you need to request for the amount in the account and the owner will have to approve that amount."
+  },
+  {
+    "title": "I am a parent. How do I link my kid?",
+    "answer": "Create your family on the app and invite your kid to it. Once your kid signs up and creates his profile on FamPay, he/she will need to accept the family invite and its done."
+  },
+  {
+    "title": "I am a kid. How do I request for money?",
+    "answer": "Once your IDFC FIRST Bank - FamPool account is set, you can just go on your family and tap on \"Request\" --> Enter Amount --> Send request."
+  },
+  {
+    "title": "How can I transfer fund to someone who is not on IDFC FIRST Bank - FamPay?",
+    "answer": "No, you cannot."
+  },
+  {
+    "title": "How can I add money to my IDFC FIRST Bank - FamPay account?",
+    "answer": "The money can be added to your IDFC FIRST Bank - FamPay account through net banking, debit card and/or by using any UPI ID. We do not allow to load through cash or credit cards."
   }
 ]
+
+
+
+
 
 

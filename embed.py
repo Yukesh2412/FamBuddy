@@ -3,6 +3,8 @@ from bs4 import BeautifulSoup
 from langchain.text_splitter import TokenTextSplitter
 import openai
 import json
+from dotenv import load_dotenv
+load_dotenv()
 
 def extract_data(root_path: str) -> list:
     print(f'Extracting data from webpages at: {root_path}')
@@ -103,8 +105,10 @@ def main():
     pages_txt= extract_txt('./cleandata.txt')
     pages_site = extract_data(root_path)
     pages=pages_txt+pages_site
+    # print(pages_txt)
 
     docs, metadata = split_data(pages)
+    # print(metadata)
 
  
     embeddings = get_embeddings(docs)
@@ -120,7 +124,7 @@ def main():
         arr.append(document)
     db['vectors']=arr
     # print(db)
-    generate_file(db, 'db.json')
+    # generate_file(db, 'db.json')
 
     chunk_size = 30
     chunks = [db['vectors'][i:i+chunk_size] for i in range(0, len(db['vectors']), chunk_size)]    

@@ -50,7 +50,7 @@ function apply_prompt_template(question) {
   // If question is irrelevant to fampay and related information, then politefully ignore or change the topic.
   // `;
 
-  const prompt = `based on the above context(refer the context it as Fampay FAQ), answer the question: ${question}, also provide the source of this information(if available) as "to find out more".
+  const prompt = `based on the above context(refer the data it as Fampay FAQ), answer the question: ${question}, also provide the link of this information(if available) as "to find out more".
  Be supportive,problem solving, more human, friendly, humourous and easy. Use simple, precise and clear language and avoid jargon or technical terms. Be creative and funny with emojis.
   If the question is irrelevant to fampay and related information, then politefully ignore or change the topic.
   `;
