@@ -82,7 +82,7 @@
   },
   {
     "title": "Blog | Twitter | LinkedIn | Facebook | Instagram | Email-ID",
-    "answer": "Blog-https://fampay.in/blog, twitter-https://twitter.com/fampayindia, facebook-https://facebook.com/fampay.in, instagram-https://instagram.com/fampay.in, emailID-https://support@fampay.in"
+    "answer": "Blog-https://fampay.in/blog, twitter-https://twitter.com/yougotfam, facebook-https://facebook.com/yougotfam, instagram-https://instagram.com/fam.india, emailID-https://support@fampay.in"
   },
   {
     "title": "What happens if I lose my card?",

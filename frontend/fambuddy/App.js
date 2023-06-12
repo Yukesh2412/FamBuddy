@@ -23,7 +23,8 @@ const Chat = ({}) => {
     ]);
   }, []);
 
-  const ws = new WebSocket('ws://192.168.1.19:3000');
+  // const ws = new WebSocket('ws://192.168.1.19:3000');
+  const ws = new WebSocket('wss://fambuddy.onrender.com');
 
   ws.onopen = () => {
     console.log('connected to websocket');
@@ -80,6 +81,7 @@ const Chat = ({}) => {
         <Text style={styles.textBuddy}>Buddy</Text>
       </View>
       <GiftedChat
+        inverted={true}
         messages={messages}
         onSend={messages => onSend(messages)}
         user={{
