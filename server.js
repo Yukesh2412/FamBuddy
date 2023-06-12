@@ -112,10 +112,14 @@ async function GenerateResponse(user_question, previous) {
 
 wss.on("connection", function connection(ws) {
   ws.on("message", async function incoming(data) {
-    console.log("TYPING");
-    var d = JSON.parse(data);
-    var msg = await GenerateResponse(d.current, d.previous);
-    ws.send(msg);
+    try {
+      console.log("TYPING");
+      var d = JSON.parse(data);
+      var msg = await GenerateResponse(d.current, d.previous);
+      ws.send(msg);
+    } catch (err) {
+      console.log(err);
+    }
   });
 });
 
