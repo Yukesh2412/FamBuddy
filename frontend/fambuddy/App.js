@@ -2,12 +2,11 @@ import React, {useEffect, useCallback, useState} from 'react';
 import {View, Text, StyleSheet} from 'react-native';
 
 import {GiftedChat} from 'react-native-gifted-chat';
-// import {TypingAnimation} from 'react-native-typing-animation';
 
 const Chat = ({}) => {
   const [messages, setMessages] = useState([]);
   const [isTyping, setisTyping] = useState(false);
-
+  var array = [];
   useEffect(() => {
     setMessages([
       {
@@ -57,13 +56,17 @@ const Chat = ({}) => {
     console.log('websocket closed', e.code, e.reason);
   };
 
-  const onSend = useCallback((messages = []) => {
-    ws.send(JSON.stringify(messages[0]));
-    setMessages(previousMessages =>
-      GiftedChat.append(previousMessages, messages),
+  const onSend = useCallback((msg = []) => {
+    ws.send(
+      JSON.stringify({
+        previous: array,
+        current: msg[0].text,
+      }),
     );
+    // ws.send(msg[0].text);
+    array.push(msg[0].text);
+    setMessages(previousMessages => GiftedChat.append(previousMessages, msg));
     setisTyping(!isTyping);
-    console.log(messages);
   }, []);
 
   return (

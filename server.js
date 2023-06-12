@@ -55,8 +55,8 @@ function apply_prompt_template(question, previous) {
   //   If the question is irrelevant to fampay and related information, then politefully ignore or change the topic.
   //   `;
   const prompt = `
-Assume you are chatbot and you have answered to the previous question=${previous}, and 
-based on the above all data and context(refer the data it as Fampay FAQ), answer the follow up question: ${question}, also provide the link of this information(if available) as "to find out more".
+Assume you are chatbot and you have answered to the previous question=${previous}, and understand the context of previous question and follow up question=${question}
+based on the above all data and context(refer the data it as Fampay FAQ), answer the follow up question, also provide the link of this information(if available) as "to find out more".
 Be supportive,problem solving, more human, friendly, humourous and easy. Use simple, precise and clear language and avoid jargon or technical terms. Be creative and funny with emojis.
 If the question is irrelevant to fampay and related information, then politefully ignore or change the topic
 
@@ -126,6 +126,7 @@ wss.on("connection", function connection(ws) {
   ws.on("message", async function incoming(data) {
     console.log("TYPING");
     var d = JSON.parse(data);
+    // console.log(d);
     var msg = await ask(d.current, d.previous);
     // var msg = await ask(data.toString());
     ws.send(msg);
