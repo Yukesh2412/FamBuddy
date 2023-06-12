@@ -58,15 +58,19 @@ const Chat = ({}) => {
   };
 
   const onSend = useCallback((msg = []) => {
-    ws.send(
-      JSON.stringify({
-        previous: array,
-        current: msg[0].text,
-      }),
-    );
-    array.push(msg[0].text);
-    setMessages(previousMessages => GiftedChat.append(previousMessages, msg));
-    setisTyping(!isTyping);
+    try {
+      ws.send(
+        JSON.stringify({
+          previous: array,
+          current: msg[0].text,
+        }),
+      );
+      array.push(msg[0].text);
+      setMessages(previousMessages => GiftedChat.append(previousMessages, msg));
+      setisTyping(!isTyping);
+    } catch (e) {
+      console.log(e);
+    }
   }, []);
 
   return (
@@ -81,7 +85,7 @@ const Chat = ({}) => {
         <Text style={styles.textBuddy}>Buddy</Text>
       </View>
       <GiftedChat
-        inverted={true}
+        // inverted={true}
         messages={messages}
         onSend={messages => onSend(messages)}
         user={{
