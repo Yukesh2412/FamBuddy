@@ -15,7 +15,7 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 const port = 3000 || process.env.PORT;
 
-function query_database(query_prompt) {
+function QueryDB(query_prompt) {
   const url = process.env.PINECONE_URL;
   const headers = {
     "Content-Type": "application/json",
@@ -43,17 +43,7 @@ function query_database(query_prompt) {
     });
 }
 
-function apply_prompt_template(question, previous) {
-  // const prompt = `Assume you are chatbot and Understand the context of data given and this is the question=${question}. Provide the link of this information(if available) as "to find out more".
-  //     if its a follow up question, understand all previous chat's context which relevant to fampay queries.
-  //     You should tone in supportive,problem solving, more human, friendly, humourous and easy. (Note: Response should be precise,clear,in points and emojis if possible).
-  // If question is irrelevant to fampay and related information, then politefully ignore or change the topic.
-  // `;
-
-  //   const prompt = `based on the above context(refer the data it as Fampay FAQ), answer the question: ${question}, also provide the link of this information(if available) as "to find out more".
-  //  Be supportive,problem solving, more human, friendly, humourous and easy. Use simple, precise and clear language and avoid jargon or technical terms. Be creative and funny with emojis.
-  //   If the question is irrelevant to fampay and related information, then politefully ignore or change the topic.
-  //   `;
+function PromptEnhancement(question, previous) {
   const prompt = `
 Assume you are chatbot and you have answered to the previous question=${previous}, and understand the context of previous question and follow up question=${question}
 based on the above all data and context(refer the data it as Fampay FAQ), answer the follow up question, also provide the link of this information(if available) as "to find out more".
@@ -65,7 +55,7 @@ If the question is irrelevant to fampay and related information, then politefull
   return prompt;
 }
 
-async function call_chatgpt_api(user_question, chunks, previous) {
+async function GPT_Api_Call(user_question, chunks, previous) {
   var messages = chunks.map((chunk) => {
     if (chunk.docs) {
       return {
@@ -77,7 +67,7 @@ async function call_chatgpt_api(user_question, chunks, previous) {
   });
   messages = messages.filter((item) => item !== null);
 
-  const question = apply_prompt_template(user_question, previous);
+  const question = PromptEnhancement(user_question, previous);
   messages.push({ role: "user", content: question });
 
   const response = await openai.createChatCompletion({
@@ -91,7 +81,7 @@ async function call_chatgpt_api(user_question, chunks, previous) {
   return response;
 }
 
-async function ask(user_question, previous) {
+async function GenerateResponse(user_question, previous) {
   try {
     const resp = await openai.createEmbedding({
       input: user_question,
@@ -100,35 +90,31 @@ async function ask(user_question, previous) {
 
     const embeddings = resp.data.data[0].embedding;
 
-    // Query the database with the embeddings and get the result
-    const chunks_response = await query_database(embeddings);
+    // query the database with the embeddings and get the result
+    const chunks_response = await QueryDB(embeddings);
 
     let chunks = [];
 
-    // Loop through the matches in the chunks response and get the metadata for each match
+    // loop through the matches in the chunks response and get the metadata for each match
     for (let match of chunks_response.matches) {
       let metadata = match.metadata || {};
       chunks.push(metadata);
     }
 
-    const response = await call_chatgpt_api(user_question, chunks, previous);
+    const response = await GPT_Api_Call(user_question, chunks, previous);
 
     return response.data.choices[0].message.content;
   } catch (error) {
     console.error(error);
-    return "Sorry, something went wrong.";
+    return "Snaps!!.. Oh something went wrong!!";
   }
 }
-
-// console.log(ask("what is fam"));
 
 wss.on("connection", function connection(ws) {
   ws.on("message", async function incoming(data) {
     console.log("TYPING");
     var d = JSON.parse(data);
-    // console.log(d);
-    var msg = await ask(d.current, d.previous);
-    // var msg = await ask(data.toString());
+    var msg = await GenerateResponse(d.current, d.previous);
     ws.send(msg);
   });
 });

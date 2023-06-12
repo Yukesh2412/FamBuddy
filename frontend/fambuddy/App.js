@@ -63,7 +63,6 @@ const Chat = ({}) => {
         current: msg[0].text,
       }),
     );
-    // ws.send(msg[0].text);
     array.push(msg[0].text);
     setMessages(previousMessages => GiftedChat.append(previousMessages, msg));
     setisTyping(!isTyping);

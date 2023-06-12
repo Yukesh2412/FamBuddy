@@ -6,7 +6,7 @@ import json
 from dotenv import load_dotenv
 load_dotenv()
 
-def extract_data(root_path: str) -> list:
+def DataExtraction(root_path: str) -> list:
     print(f'Extracting data from webpages at: {root_path}')
     pages = []
 
@@ -17,7 +17,6 @@ def extract_data(root_path: str) -> list:
                 soup = BeautifulSoup(open(path), "html.parser")
                 description = soup.find(class_="pos-relative js-post-content").get_text().strip()
                 if soup.title:
-                    # title = str(soup.title.string)
                     title=title = soup.find("h1").get_text()
                 else:
                     title = ""
@@ -31,10 +30,10 @@ def extract_data(root_path: str) -> list:
                     }
                 })
     
-    print(f'Extracted data from {len(pages)} pages.\n')
+    print(f'Webpage data extracted: {len(pages)} pages.\n')
     return pages
 
-def extract_txt(root_path: str) -> list:
+def TextExtraction(root_path: str) -> list:
     print(f'Extracting data from txt files at: {root_path}')
     f = open('./cleandata.txt', 'r')
     data = json.load(f)
@@ -55,7 +54,7 @@ def extract_txt(root_path: str) -> list:
     f.close()
     return pages
 
-def split_data(pages: list) -> tuple:
+def DataSplitting(pages: list) -> tuple:
     text_splitter = TokenTextSplitter(chunk_size=500, chunk_overlap=100)
 
     docs, metadata = [], []
@@ -72,8 +71,7 @@ def split_data(pages: list) -> tuple:
 
 
 
-def get_embeddings(docs: list) -> list:
-    # openai.api_key ="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"
+def GenerateEmbeddings(docs: list) -> list:
     openai.api_key=os.environ.get('OPENAI_API')
     
     try:
@@ -100,18 +98,16 @@ def generate_file(data: dict, filename: str) -> None:
         json.dump(data, f, indent=4)
 
 def main():
-    # root_path = './help.mydukaan.io'
     root_path = './blog'
-    pages_txt= extract_txt('./cleandata.txt')
-    pages_site = extract_data(root_path)
-    pages=pages_txt+pages_site
+    data_from_textfile= TextExtraction('./cleandata.txt')
+    data_from_pages = DataExtraction(root_path)
+    pages=data_from_textfile+data_from_pages
     # print(pages_txt)
 
-    docs, metadata = split_data(pages)
+    docs, metadata = DataSplitting(pages)
     # print(metadata)
 
- 
-    embeddings = get_embeddings(docs)
+    embeddings = GenerateEmbeddings(docs)
 
     db = {'vectors':[]}
     arr=[]
@@ -123,8 +119,7 @@ def main():
         }
         arr.append(document)
     db['vectors']=arr
-    # print(db)
-    # generate_file(db, 'db.json')
+    generate_file(db, 'db.json')
 
     chunk_size = 30
     chunks = [db['vectors'][i:i+chunk_size] for i in range(0, len(db['vectors']), chunk_size)]    
