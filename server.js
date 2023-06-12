@@ -43,22 +43,29 @@ function query_database(query_prompt) {
     });
 }
 
-function apply_prompt_template(question) {
+function apply_prompt_template(question, previous) {
   // const prompt = `Assume you are chatbot and Understand the context of data given and this is the question=${question}. Provide the link of this information(if available) as "to find out more".
   //     if its a follow up question, understand all previous chat's context which relevant to fampay queries.
   //     You should tone in supportive,problem solving, more human, friendly, humourous and easy. (Note: Response should be precise,clear,in points and emojis if possible).
   // If question is irrelevant to fampay and related information, then politefully ignore or change the topic.
   // `;
 
-  const prompt = `based on the above context(refer the data it as Fampay FAQ), answer the question: ${question}, also provide the link of this information(if available) as "to find out more".
- Be supportive,problem solving, more human, friendly, humourous and easy. Use simple, precise and clear language and avoid jargon or technical terms. Be creative and funny with emojis.
-  If the question is irrelevant to fampay and related information, then politefully ignore or change the topic.
-  `;
+  //   const prompt = `based on the above context(refer the data it as Fampay FAQ), answer the question: ${question}, also provide the link of this information(if available) as "to find out more".
+  //  Be supportive,problem solving, more human, friendly, humourous and easy. Use simple, precise and clear language and avoid jargon or technical terms. Be creative and funny with emojis.
+  //   If the question is irrelevant to fampay and related information, then politefully ignore or change the topic.
+  //   `;
+  const prompt = `
+Assume you are chatbot and you have answered to the previous question=${previous}, and 
+based on the above all data and context(refer the data it as Fampay FAQ), answer the follow up question: ${question}, also provide the link of this information(if available) as "to find out more".
+Be supportive,problem solving, more human, friendly, humourous and easy. Use simple, precise and clear language and avoid jargon or technical terms. Be creative and funny with emojis.
+If the question is irrelevant to fampay and related information, then politefully ignore or change the topic
+
+`;
 
   return prompt;
 }
 
-async function call_chatgpt_api(user_question, chunks) {
+async function call_chatgpt_api(user_question, chunks, previous) {
   var messages = chunks.map((chunk) => {
     if (chunk.docs) {
       return {
@@ -70,8 +77,9 @@ async function call_chatgpt_api(user_question, chunks) {
   });
   messages = messages.filter((item) => item !== null);
 
-  const question = apply_prompt_template(user_question);
+  const question = apply_prompt_template(user_question, previous);
   messages.push({ role: "user", content: question });
+
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: messages,
@@ -83,7 +91,7 @@ async function call_chatgpt_api(user_question, chunks) {
   return response;
 }
 
-async function ask(user_question) {
+async function ask(user_question, previous) {
   try {
     const resp = await openai.createEmbedding({
       input: user_question,
@@ -103,7 +111,7 @@ async function ask(user_question) {
       chunks.push(metadata);
     }
 
-    const response = await call_chatgpt_api(user_question, chunks);
+    const response = await call_chatgpt_api(user_question, chunks, previous);
 
     return response.data.choices[0].message.content;
   } catch (error) {
@@ -117,9 +125,9 @@ async function ask(user_question) {
 wss.on("connection", function connection(ws) {
   ws.on("message", async function incoming(data) {
     console.log("TYPING");
-    // ws.send("typing..");
-    var msg = await ask(data.toString());
-    // ws.send("typing..");
+    var d = JSON.parse(data);
+    var msg = await ask(d.current, d.previous);
+    // var msg = await ask(data.toString());
     ws.send(msg);
   });
 });
