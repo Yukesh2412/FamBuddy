@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>How to Clean Up Your Android App&#x27;s Dependencies: The Ultimate Guide</title>
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      /* This font-face is here to make icons work if the Ghost instance is installed in a subdirectory */
+      @font-face {
+        font-family: 'icomoon';
+        src: url("/blog/assets/fonts/icomoon.eot?vukg2s?v=22080dfa02");
+        src: url("/blog/assets/fonts/icomoon.eot?vukg2s?v=22080dfa02#iefix") format('embedded-opentype'),
+        url("/blog/assets/fonts/icomoon.ttf?vukg2s?v=22080dfa02") format('truetype'),
+        url("/blog/assets/fonts/icomoon.woff?vukg2s?v=22080dfa02") format('woff'),
+        url("/blog/assets/fonts/icomoon.svg?vukg2s?v=22080dfa02#icomoon") format('svg');
+        font-weight: normal;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
+    <link rel="stylesheet" type="text/css" href="/blog/assets/css/app.css?v=22080dfa02" media="screen" />
+
+    
+
+    <link rel="icon" href="https://fampay.in/blog/content/images/size/w256h256/2020/11/logofile-06-2.png" type="image/png" />
+    <link rel="canonical" href="https://fampay.in/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/" />
+    <meta name="referrer" content="no-referrer-when-downgrade" />
+    <link rel="amphtml" href="https://fampay.in/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/amp/" />
+    
+    <meta property="og:site_name" content="UnRead by FamPay" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How to Clean Up Your Android App&#x27;s Dependencies: The Ultimate Guide" />
+    <meta property="og:description" content="We recently started modularising our Android app and realised the need for
+better dependency management as we scale. We didn&#x27;t want to repeat the same set
+of dependencies with different versions in different modules. So, we began the
+search for the perfect solution.
+
+&gt; This blog post will help you understand" />
+    <meta property="og:url" content="https://fampay.in/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/" />
+    <meta property="og:image" content="https://blog.fampay.in/content/images/2020/06/FamPay-unread-blog-cover-2-2.jpg" />
+    <meta property="article:published_time" content="2023-03-14T13:11:37.000Z" />
+    <meta property="article:modified_time" content="2023-03-14T13:11:37.000Z" />
+    <meta property="article:tag" content="Tech" />
+    
+    <meta property="article:publisher" content="https://www.facebook.com/fampay.in" />
+    <meta property="article:author" content="https://www.facebook.com/fampay.in/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How to Clean Up Your Android App&#x27;s Dependencies: The Ultimate Guide" />
+    <meta name="twitter:description" content="We recently started modularising our Android app and realised the need for
+better dependency management as we scale. We didn&#x27;t want to repeat the same set
+of dependencies with different versions in different modules. So, we began the
+search for the perfect solution.
+
+&gt; This blog post will help you understand" />
+    <meta name="twitter:url" content="https://fampay.in/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/" />
+    <meta name="twitter:image" content="https://blog.fampay.in/content/images/2020/06/FamPay-unread-blog-cover-2-1.jpg" />
+    <meta name="twitter:label1" content="Written by" />
+    <meta name="twitter:data1" content="FamPay Team" />
+    <meta name="twitter:label2" content="Filed under" />
+    <meta name="twitter:data2" content="Tech" />
+    <meta name="twitter:site" content="@fampayindia" />
+    <meta name="twitter:creator" content="@fampayindia" />
+    <meta property="og:image:width" content="2000" />
+    <meta property="og:image:height" content="1286" />
+    
+    <script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "publisher": {
+        "@type": "Organization",
+        "name": "UnRead by FamPay",
+        "url": "https://fampay.in/blog/",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://fampay.in/blog/content/images/2020/11/logofilewhite-11-2.png"
+        }
+    },
+    "author": {
+        "@type": "Person",
+        "name": "FamPay Team",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://fampay.in/blog/content/images/2020/11/logo.png",
+            "width": 108,
+            "height": 98
+        },
+        "url": "https://fampay.in/blog/author/fampay/",
+        "sameAs": [
+            "https://fampay.in/",
+            "https://www.facebook.com/fampay.in/",
+            "https://twitter.com/fampayindia"
+        ]
+    },
+    "headline": "How to Clean Up Your Android App&#x27;s Dependencies: The Ultimate Guide",
+    "url": "https://fampay.in/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/",
+    "datePublished": "2023-03-14T13:11:37.000Z",
+    "dateModified": "2023-03-14T13:11:37.000Z",
+    "keywords": "Tech",
+    "description": "We recently started modularising our Android app and realised the need for\nbetter dependency management as we scale. We didn&#x27;t want to repeat the same set\nof dependencies with different versions in different modules. So, we began the\nsearch for the perfect solution.\n\n&gt; This blog post will help you understand different Gradle dependency management\napproaches, highlighting their evolution over the past few years. Feel free to\nskip to the end to know the approach we finally chose.\nLet’s dive into s",
+    "mainEntityOfPage": "https://fampay.in/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/"
+}
+    </script>
+
+    <meta name="generator" content="Ghost 5.47" />
+    <link rel="alternate" type="application/rss+xml" title="UnRead by FamPay" href="https://fampay.in/blog/rss/" />
+    <script defer src="https://cdn.jsdelivr.net/ghost/portal@~2.30/umd/portal.min.js" data-i18n="false" data-ghost="https://fampay.in/blog/" data-key="17ef08297f0b6181934a5309a8" data-api="https://fampay.in/blog/ghost/api/content/" crossorigin="anonymous"></script><style id="gh-members-styles">.gh-post-upgrade-cta-content,
+.gh-post-upgrade-cta {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    text-align: center;
+    width: 100%;
+    color: #ffffff;
+    font-size: 16px;
+}
+
+.gh-post-upgrade-cta-content {
+    border-radius: 8px;
+    padding: 40px 4vw;
+}
+
+.gh-post-upgrade-cta h2 {
+    color: #ffffff;
+    font-size: 28px;
+    letter-spacing: -0.2px;
+    margin: 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta p {
+    margin: 20px 0 0;
+    padding: 0;
+}
+
+.gh-post-upgrade-cta small {
+    font-size: 16px;
+    letter-spacing: -0.2px;
+}
+
+.gh-post-upgrade-cta a {
+    color: #ffffff;
+    cursor: pointer;
+    font-weight: 500;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a:hover {
+    color: #ffffff;
+    opacity: 0.8;
+    box-shadow: none;
+    text-decoration: underline;
+}
+
+.gh-post-upgrade-cta a.gh-btn {
+    display: block;
+    background: #ffffff;
+    text-decoration: none;
+    margin: 28px 0 0;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.gh-post-upgrade-cta a.gh-btn:hover {
+    opacity: 0.92;
+}</style>
+    <script defer src="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/sodo-search.min.js" data-key="17ef08297f0b6181934a5309a8" data-styles="https://cdn.jsdelivr.net/ghost/sodo-search@~1.1/umd/main.css" data-sodo-search="https://fampay.in/blog/" crossorigin="anonymous"></script>
+    
+    <link href="https://fampay.in/blog/webmentions/receive/" rel="webmention" />
+    <script defer src="/blog/public/cards.min.js?v=22080dfa02"></script>
+    <link rel="stylesheet" type="text/css" href="/blog/public/cards.min.css?v=22080dfa02">
+    <script defer src="/blog/public/member-attribution.min.js?v=22080dfa02"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-147725948-3"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-147725948-3');
+</script>
+
+<style>
+    :root,[data-theme=light] {
+        --background-color:#fff;--primary-foreground-color:#4a4a4a;--secondary-foreground-color:#000;--primary-subtle-color:#fbaf03;--secondary-subtle-color:#f4f8fd;--titles-color:#333;--link-color:#293951;--primary-border-color:#9b9b9b;--secondary-border-color:#f0f8ff;--article-shadow-normal:0 10px 10px rgba(0,0,0,0.08);--article-shadow-hover:0 4px 60px 0 rgba(0,0,0,0.2);--transparent-background-color:hsla(0,0%,100%,0.99);--footer-background-color:#293951;--submenu-shadow-color-opacity:0.25;--button-shadow-color-normal:hsla(0,0%,42.4%,0.2);--button-shadow-color-hover:hsla(0,0%,42.4%,0.3);--toggle-darkmode-button-color:#fff;--table-background-color-odd:#fafafa;--table-head-border-bottom:#e2e2e2
+    }
+
+	[data-theme=dark] {
+    	--background-color:#111;--primary-foreground-color:#ccc;--secondary-foreground-color:#fff;--primary-subtle-color:#fbaf03;--secondary-subtle-color:#141920;--titles-color:#b4b4b4;--link-color:#fbaf03;--primary-border-color:#1d1d1d;--secondary-border-color:#0f0f0f;--article-shadow-normal:0 4px 5px 5px rgba(0,0,0,0.1);--article-shadow-hover:0 4px 5px 10px rgba(0,0,0,0.1);--transparent-background-color:rgba(0,0,0,0.99);--footer-background-color:#080808;--submenu-shadow-color-opacity:0.55;--button-shadow-color-normal:rgba(10,10,10,0.5);--button-shadow-color-hover:rgba(10,10,10,0.5);--toggle-darkmode-button-color:#efd114;--table-background-color-odd:#050505;--table-head-border-bottom:#1d1d1d
+    }
+
+	@media (prefers-color-scheme:dark) {
+    	:root:not([data-theme=light]) {
+        	--background-color:#111;--primary-foreground-color:#ccc;--secondary-foreground-color:#fff;--primary-subtle-color:#fbaf03;--secondary-subtle-color:#141920;--titles-color:#b4b4b4;--link-color:#fbaf03;--primary-border-color:#1d1d1d;--secondary-border-color:#0f0f0f;--article-shadow-normal:0 4px 5px 5px rgba(0,0,0,0.1);--article-shadow-hover:0 4px 5px 10px rgba(0,0,0,0.1);--transparent-background-color:rgba(0,0,0,0.99);--footer-background-color:#080808;--submenu-shadow-color-opacity:0.55;--button-shadow-color-normal:rgba(10,10,10,0.5);--button-shadow-color-hover:rgba(10,10,10,0.5);--toggle-darkmode-button-color:#efd114;--table-background-color-odd:#050505;--table-head-border-bottom:#1d1d1d
+        }
+	}
+</style><style>:root {--ghost-accent-color: #15171A;}</style>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      const ghostHost = "https://fampay.in/blog"
+      // @license-end
+    </script>
+
+    <script>
+      // @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&dn=expat.txt Expat
+      WebFontConfig = {
+        google: { families: ['Source+Sans+Pro:400,600,700&display=swap'] }
+      };
+
+      (function (d) {
+        var wf = d.createElement('script'), s = d.scripts[0];
+        wf.src = 'https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+        wf.async = true;
+        s.parentNode.insertBefore(wf, s);
+      })(document);
+      // @license-end
+    </script>
+  </head>
+  <body class="post-template tag-tech">
+    
+
+<div class="main-wrap">
+    
+<header class="m-header  js-header">
+  <div class="m-mobile-topbar" data-aos="fade-down">
+    <button class="m-icon-button in-mobile-topbar js-open-menu" aria-label="Open menu">
+      <span class="icon-menu"></span>
+    </button>
+      <a href="https://fampay.in" class="m-logo in-mobile-topbar">
+        <img src="https://fampay.in/blog/content/images/2020/11/logofilewhite-11-2.png" alt="UnRead by FamPay">
+      </a>
+    <button class="m-icon-button in-mobile-topbar js-open-search" aria-label="Open search">
+      <span class="icon-search"></span>
+    </button>
+  </div>
+
+  <div class="m-menu js-menu">
+    <button class="m-icon-button outlined as-close-menu js-close-menu" aria-label="Close menu">
+      <span class="icon-close"></span>
+    </button>
+    <div class="m-menu__main" data-aos="fade-down">
+      <div class="l-wrapper">
+        <div class="m-nav">
+          <nav class="m-nav__left">
+            <ul role="submenu">
+                <li class="only-desktop" role="menuitem">
+                  <a href="https://fampay.in" class="m-logo">
+                    <img src="https://fampay.in/blog/content/images/2020/11/logofilewhite-11-2.png" alt="UnRead by FamPay">
+                  </a>
+                </li>
+                
+    <li class="nav-unread" role="menuitem">
+      <a href="https://fampay.in/blog/">Unread</a>
+    </li>
+    <li class="nav-teens" role="menuitem">
+      <a href="https://fampay.in/blog/tag/teens/">Teens</a>
+    </li>
+    <li class="nav-parents" role="menuitem">
+      <a href="https://fampay.in/blog/tag/parents/">Parents</a>
+    </li>
+    <li class="nav-news" role="menuitem">
+      <a href="https://fampay.in/blog/tag/news/">News</a>
+    </li>
+    <li class="nav-famsays" role="menuitem">
+      <a href="https://fampay.in/blog/tag/famsays/">FamSays</a>
+    </li>
+
+              <li role="menuitem" class="js-submenu-option">
+                <button class="m-icon-button in-menu-main more js-toggle-submenu" aria-label="Toggle submenu">
+                  <span class="icon-more"></span>
+                </button>
+                <div class="m-submenu js-submenu">
+                  <div class="l-wrapper in-submenu">
+                    <!-- <section class="m-recent-articles">
+                      <h3 class="m-submenu-title in-recent-articles">Recent articles</h3>
+                      <div class="js-recent-articles">
+                            <div>
+                              <a href="/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/" class="m-recent-article">
+                                <div class="m-recent-article__picture">
+                                    <div class="no-image lozad" data-background-image="/blog/assets/images/no-image.png?v=22080dfa02"></div>
+                                </div>
+                                <h3 class="m-recent-article__title js-recent-article-title" title="How to Clean Up Your Android App&#x27;s Dependencies: The Ultimate Guide">
+                                  How to Clean Up Your Android App&#x27;s Dependencies: The Ultimate Guide
+                                </h3>
+                                <span class="m-recent-article__date">3 months ago</span>
+                              </a>
+                            </div>
+                            <div>
+                              <a href="/blog/discover-fampays-engagement-service-missions-3/" class="m-recent-article">
+                                <div class="m-recent-article__picture">
+                                    <div class="no-image lozad" data-background-image="/blog/assets/images/no-image.png?v=22080dfa02"></div>
+                                </div>
+                                <h3 class="m-recent-article__title js-recent-article-title" title="Discover FamPay&#x27;s Engagement Service: Missions">
+                                  Discover FamPay&#x27;s Engagement Service: Missions
+                                </h3>
+                                <span class="m-recent-article__date">3 months ago</span>
+                              </a>
+                            </div>
+                            <div>
+                              <a href="/blog/implementing-an-in-memory-queue/" class="m-recent-article">
+                                <div class="m-recent-article__picture">
+                                    <div class="lozad" data-background-image="/blog/content/images/size/w300/2022/11/Group-2179.png"></div>
+                                </div>
+                                <h3 class="m-recent-article__title js-recent-article-title" title="Implementing an In-memory Queue 🧑‍💻">
+                                  Implementing an In-memory Queue 🧑‍💻
+                                </h3>
+                                <span class="m-recent-article__date">7 months ago</span>
+                              </a>
+                            </div>
+                            <div>
+                              <a href="/blog/covid-19-vaccination-as-a-teen-a-guide/" class="m-recent-article">
+                                <div class="m-recent-article__picture">
+                                    <div class="lozad" data-background-image="/blog/content/images/size/w300/2022/02/Blog-template-1.png"></div>
+                                </div>
+                                <h3 class="m-recent-article__title js-recent-article-title" title="Covid-19 Vaccination for teens, a step-by-step guide💉">
+                                  Covid-19 Vaccination for teens, a step-by-step guide💉
+                                </h3>
+                                <span class="m-recent-article__date">a year ago</span>
+                              </a>
+                            </div>
+                      </div>
+                    </section> -->
+                    <section class="m-tags">
+                      <h3 class="m-submenu-title">Tags</h3>
+                        <ul>
+                            <li>
+                              <a href="/blog/tag/community/">Community</a>
+                            </li>
+                            <li>
+                              <a href="/blog/tag/culture/">Culture</a>
+                            </li>
+                            <li>
+                              <a href="/blog/tag/famsays/">FamSays</a>
+                            </li>
+                            <li>
+                              <a href="/blog/tag/growth/">Growth</a>
+                            </li>
+                            <li>
+                              <a href="/blog/tag/lifestyle/">Lifestyle</a>
+                            </li>
+                            <li>
+                              <a href="/blog/tag/news/">News</a>
+                            </li>
+                            <li>
+                              <a href="/blog/tag/parents/">Parents</a>
+                            </li>
+                            <li>
+                              <a href="/blog/tag/pr-news/">Press Release</a>
+                            </li>
+                            <li>
+                              <a href="/blog/tag/product/">Product</a>
+                            </li>
+                            <li>
+                              <a href="/blog/tag/tech/">Tech</a>
+                            </li>
+                        </ul>
+                    </section>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </nav>
+          <div class="m-nav__right">
+            <button class="m-icon-button in-menu-main js-open-search" aria-label="Open search">
+              <span class="icon-search"></span>
+            </button>
+            <!-- <div class="m-toggle-darkmode js-tooltip" data-tippy-content="Toggle dark mode">
+              <input type="checkbox" class="js-toggle-darkmode">
+              <div></div>
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+    
+  <section class="m-hero no-picture in-post" data-aos="fade">
+    </section>
+  
+  <main>
+    <article>
+      <div class="l-content in-post">
+          <div class="l-wrapper in-post no-image js-aos-wrapper" data-aos="fade-up" data-aos-delay="300">
+            <div class="l-post-content  has-subscribe-form js-progress-content">
+              <header class="m-heading">
+                <h1 class="m-heading__title in-post">How to Clean Up Your Android App&#x27;s Dependencies: The Ultimate Guide</h1>
+                <div class="m-heading__meta">
+                    <a href="https://fampay.in/blog/tag/tech/" class="m-heading__meta__tag">Tech</a>
+                    <span class="m-heading__meta__divider">&bull;</span>
+                  <span class="m-heading__meta__time">Mar 14, 2023</span>
+                </div>
+              </header>
+              <div class="pos-relative js-post-content">
+                <div class="m-share">
+                  <div class="m-share__content js-sticky">
+                    <!-- <a href="https://www.instagram.com/?url=https://fampay.in/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Instagram">
+                      <span class="icon-instagram"></span>
+                    </a> -->
+                    <a onclick="navigator.share({title: 'UnRead by FamPay',text: 'How to Clean Up Your Android App&#x27;s Dependencies: The Ultimate Guide',url: 'https://fampay.in/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/'});" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Share">
+                      <span class="icon-flickr"></span>
+                    </a>
+                    <a href="https://wa.me/?text=How%20to%20Clean%20Up%20Your%20Android%20App's%20Dependencies%3A%20The%20Ultimate%20Guide%20https://fampay.in/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Whatsapp">
+                      <span class="icon-whatsapp"></span>
+                    </a>
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=https://fampay.in/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Facebook">
+                      <span class="icon-facebook"></span>
+                    </a>
+                    <a href="https://twitter.com/intent/tweet?text=How%20to%20Clean%20Up%20Your%20Android%20App's%20Dependencies%3A%20The%20Ultimate%20Guide&url=https://fampay.in/blog/how-to-clean-up-your-android-apps-dependencies-the-ultimate-guide-2/" class="m-icon-button filled in-share" target="_blank" rel="noopener" aria-label="Twitter">
+                      <span class="icon-twitter"></span>
+                    </a>
+                    <button class="m-icon-button filled in-share progress js-scrolltop" aria-label="Scroll to top">
+                      <span class="icon-arrow-top"></span>
+                      <svg>
+                        <circle class="progress-ring__circle js-progress" fill="transparent" r="0" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+                <figure class="kg-card kg-image-card"><img src="https://fampay.in/blog/content/images/2023/03/image.png" class="kg-image" alt loading="lazy" width="2000" height="1610" srcset="https://fampay.in/blog/content/images/size/w600/2023/03/image.png 600w, https://fampay.in/blog/content/images/size/w1000/2023/03/image.png 1000w, https://fampay.in/blog/content/images/size/w1600/2023/03/image.png 1600w, https://fampay.in/blog/content/images/2023/03/image.png 2000w" sizes="(min-width: 720px) 720px"></figure><p>We recently started modularising our Android app and realised the need for better dependency management as we scale. We didn't want to repeat the same set of dependencies with different versions in different modules. So, we began the search for the perfect solution.</p><blockquote>This blog post will help you understand different Gradle dependency management approaches, highlighting their evolution over the past few years. Feel free to skip to the end to know the approach we finally chose.</blockquote><p><strong>Let’s dive into some of these approaches.</strong></p><h2 id="1-dependencies-in-buildgradle-files">1) Dependencies in build.gradle files</h2><p>This is the standard approach for managing dependencies in Android, which is auto-applied when creating a project. While we have been using it so far, we are currently working to transition away from it. Nonetheless, we wanted to acknowledge its longstanding presence and significance.</p><figure class="kg-card kg-image-card"><img src="https://media.giphy.com/media/OkzCcGn5fY29e7bvpS/giphy.gif" class="kg-image" alt="https://media.giphy.com/media/OkzCcGn5fY29e7bvpS/giphy.gif" loading="lazy"></figure><p>In this approach, we add dependencies directly inside the build.gradle of each module or project.</p><p><em><strong>build.gradle</strong></em></p><pre><code>dependencies {
+    implementation "androidx.core:core-ktx:1.9.0"
+    implementation 'androidx.activity:activity:1.6.1'
+    implementation 'androidx.activity:activity-ktx:1.6.1'
+}
+</code></pre><p><strong>The pros</strong></p><ul><li>No setup is required; everything is done by default</li><li>Getting notified when a new update is available</li></ul><p><strong>The cons</strong></p><ul><li>Difficult to keep track of and manage versions</li><li>No navigation support</li><li>No auto-completion support</li><li>Does not provide any indication or highlight errors</li><li>Issues with versioning</li><li>Redundant code</li></ul><h2 id="2-extrapropertiesextension-ext">2) ExtraPropertiesExtension (ext)</h2><p>In our search for the perfect solution, we encountered a widely used approach that was popular a few years ago. This involves creating a separate Gradle dependency file and utilizing Gradle's "ExtraPropertiesExtension" to access dependencies.</p><p>The following code snippets illustrate the implementation of the approach:</p><ul><li>A separate Gradle file is created to manage the dependencies</li><li>The dependencies are then applied to the project's Gradle file</li><li>Finally, the module's Gradle files can access these dependencies</li></ul><p><em><strong>config.gradle</strong></em></p><pre><code>def libraries = [:]
+supportAppCompat: "com.android.support:appcompat-v7:$versions.supportLibs"
+</code></pre><p><strong>or</strong></p><pre><code>ext.libraries = [
+supportAppCompat: "com.android.support:appcompat-v7:$versions.supportLibs"
+]
+</code></pre><p>***build.gradle (*<em>project)</em></p><pre><code>apply from: 'config.gradle'
+</code></pre><p><em><strong>build.gradle (<strong>module</strong>)</strong></em></p><pre><code>dependencies {
+    compile libraries.supportAppCompat
+}
+</code></pre><p><strong>The pros</strong></p><ul><li>Eliminates the need to repeatedly rewrite the same dependency code in each module</li><li>Prevents issues with versioning</li><li>Notifies when a new update is available</li></ul><p><strong>The cons</strong></p><ul><li>Requires familiarity with Groovy</li><li>Lacks navigation support, which can hinder development efficiency</li><li>Lacks auto-completion support, making dependency management more time-consuming</li><li>Does not provide error highlighting, which can make troubleshooting difficult</li></ul><figure class="kg-card kg-image-card"><img src="https://media.giphy.com/media/PnggNmuamz7kbgfUTL/giphy.gif" class="kg-image" alt="https://media.giphy.com/media/PnggNmuamz7kbgfUTL/giphy.gif" loading="lazy"></figure><p>To learn more about this approach or about ExtraPropertiesExtensions in general, you can refer to this Gradle documentation.</p><p><a href="https://docs.gradle.org/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html?ref=fampay.in">https://docs.gradle.org/current/dsl/org.gradle.api.plugins.ExtraPropertiesExtension.html</a></p><h2 id="3-buildsrc-kotlin-dsl">3) BuildSrc + Kotlin DSL</h2><p>This approach is particularly interesting as it is significantly advanced compared to previous methods, particularly due to its utilisation of Kotlin DSL and accompanying IDE support.</p><p><a href="https://i.embed.ly/1/display/resize?url=https%3A%2F%2Fi.giphy.com%2Fmedia%2FmG1uA7JnuAZqbWV44g%2Fgiphy.gif&key=a19fcc184b9711e1b4764040d3dc5c07&ref=fampay.in">https://i.embed.ly/1/display/resize?url=https%3A%2F%2Fi.giphy.com%2Fmedia%2FmG1uA7JnuAZqbWV44g%2Fgiphy.gif&amp;key=a19fcc184b9711e1b4764040d3dc5c07</a></p><h3 id="what-is-kotlin-dsl"><strong>What is Kotlin DSL?</strong></h3><p>Many developers are already familiar with Kotlin DSL, which offers a flexible tool for leveraging the power of Kotlin programming language.</p><blockquote>Gradle’s Kotlin DSL provides an alternative syntax to the traditional Groovy DSL, along with an improved editing experience in supported IDEs. This includes enhanced content assist, refactoring, documentation, and more.</blockquote><h3 id="what-is-buildsrc"><strong>What is BuildSrc?</strong></h3><p>The BuildSrc directory, located in the root of a Gradle project, contains custom build logic written using the Kotlin DSL. With minimal setup requirements, this logic can be shared across the entire project. The following code snippet demonstrates this concept.</p><p><em><strong>Create a <code>buildSrc</code> folder and enable Kotlin DSL</strong></em></p><p><em><strong>buildSrc/build.gradle.kts</strong></em></p><pre><code>import org.gradle.kotlin.dsl.`kotlin-dsl`
+
+plugins {
+    `kotlin-dsl`
+}
+
+repositories {
+    mavenCentral()
+}
+</code></pre><p><em><strong>buildSrc/src/main/kotlin/Dependencies.kt</strong></em></p><pre><code>object Libs {
+   val androidxCamera2 = "androidx.camera:camera-camera2:1.1.0"
+}
+</code></pre><p><em><strong>build.gradle</strong></em></p><pre><code>dependencies {
+    implementation(Dependencies.androidxCamera2)
+}
+</code></pre><p>Initially, we were excited and felt like we had found the perfect solution. However, our enthusiasm was short-lived when we discovered a significant trade-off associated with this approach.</p><h3 id="according-to-gradle-docs"><strong>According to Gradle docs</strong></h3><blockquote>Any changes made to buildSrc will cause the entire project to become out-of-date. As a result, when making small incremental changes, utilising the --no-rebuild command line option can provide faster feedback. However, it is important to run a full build regularly, or at least once development is complete.</blockquote><p><strong>The pros</strong></p><ul><li>Eliminates the need to rewrite dependencies repeatedly for each module</li><li>Eliminates versioning issues</li><li>Provides Kotlin support</li><li>Eliminates the need to learn Groovy</li><li>Offers navigation support</li><li>Provides auto-completion support</li></ul><p><strong>The cons</strong></p><ul><li>Any change to a dependency will trigger recompilation of build scripts and invalidate the Gradle cache, causing rebuilding of more than what is needed for a single version change</li><li>It has poor performance when compared to Groovy scripts, as documented by <a href="https://docs.gradle.org/current/userguide/migrating_from_groovy_to_kotlin_dsl.html?ref=fampay.in#migrating_groovy_kotlin">Gradle</a>, <a href="https://developer.android.com/studio/build/migrate-to-kts?ref=fampay.in">android</a>, and a reported <a href="https://github.com/gradle/gradle/issues/15886?ref=fampay.in">open ticket</a> on GitHub</li><li>Increased build time</li><li>The remote Gradle cache also gets invalidated</li><li>Automatic version checks do not work</li></ul><p><strong>Anything that affects the build time is a huge concern, so we decided to move forward. However, the decision to use this approach may vary depending on the project. For instance, in a single module project, it might work just fine.</strong></p><p>*<strong>Note</strong>: ***<em>There is an <a href="https://github.com/gradle/gradle/pull/22540?ref=fampay.in">open ticket on Github</a>. This has a pull request that proposes changes to make <code>buildSrc</code> work like an implicit plugin included in a build (that is, an included build declared via <code>pluginManagement { includeBuild(x) }</code>). This means that if you choose to use this approach, it's possible that the performance will significantly improve in the future. However, it's up to you to decide whether to proceed with this approach.</em></p><h2 id="4-composite-builds-and-kotlin-dsl">4) Composite builds and Kotlin DSL</h2><p>This method uses composite builds to address the issues with the buildSrc approach and assumes that it may take some time before Gradle incorporates the changes to make buildSrc function like an included build.</p><figure class="kg-card kg-image-card"><img src="https://media.giphy.com/media/mMDA2ZvTdzJPk6RAlP/giphy.gif" class="kg-image" alt="https://media.giphy.com/media/mMDA2ZvTdzJPk6RAlP/giphy.gif" loading="lazy"></figure><p>In this method, we create custom plugins that define dependencies, and then we apply these custom plugins in the settings.gradle file for use in the build. i.e we move our logic from <code>buildSrc</code> into a separate <code>plugins</code> module and add <code>includeBuild(“plugins”)</code> within <code>settings.gradle</code>. Voila!</p><p><em><strong>plugins/src/dependencies.kt</strong></em></p><pre><code>class Dependencies : Plugin&lt;Project&gt; {
+  override fun apply(project: Project)
+    {
+     companion object
+        {
+          val androidxCamera2 = "androidx.camera:camera-camera2:1.1.0"
+        }
+    }
+}
+</code></pre><p><em><strong>settings.gradle</strong></em></p><pre><code>includeBuild("plugins")
+</code></pre><p><strong>The pros</strong></p><ul><li>Avoids the need to rewrite dependencies repeatedly for each module</li><li>No need to have a deep understanding of Groovy</li><li>Support for Kotlin DSL</li><li>Changes do not invalidate the Gradle cache</li><li>Navigation support for easy code browsing</li><li>Auto-completion support for faster development</li></ul><p><strong>The cons</strong></p><ul><li>There is no standardised approach for achieving this</li><li>The setup process is more complex than other approaches</li><li>Automatic version checks do not work with this</li><li>It has poor performance when compared to Groovy scripts. Since most documents mention this, you can refer to the following links - <a href="https://docs.gradle.org/current/userguide/migrating_from_groovy_to_kotlin_dsl.html?ref=fampay.in#migrating_groovy_kotlin">gradle</a>, <a href="https://developer.android.com/studio/build/migrate-to-kts?ref=fampay.in">android</a>, and an <a href="https://github.com/gradle/gradle/issues/15886?ref=fampay.in">open ticket</a> on GitHub.</li></ul><p>You can read more about composite builds <a href="https://docs.gradle.org/current/userguide/composite_builds.html?ref=fampay.in">here</a>.</p><h2 id="5-version-catalog">5) Version Catalog</h2><p>Finally, we came across the solution we were looking for - Version Catalog by Gradle.</p><p>Gradle's Version Catalog, introduced in version 7.0, is a powerful tool for managing dependencies across multiple projects. It provides a centralised list of type-safe dependencies to be used across projects. The Version Catalog is flexible and customisable. Overall, the Version Catalog is a valuable addition to the Gradle toolchain and worth exploring for better dependency management.</p><p><a href="https://i.embed.ly/1/display/resize?url=https%3A%2F%2Fi.giphy.com%2Fmedia%2F1ym5LJ17vp77BL8X5O%2Fgiphy.gif&key=a19fcc184b9711e1b4764040d3dc5c07&ref=fampay.in">https://i.embed.ly/1/display/resize?url=https%3A%2F%2Fi.giphy.com%2Fmedia%2F1ym5LJ17vp77BL8X5O%2Fgiphy.gif&amp;key=a19fcc184b9711e1b4764040d3dc5c07</a></p><p>The Version Catalog is a file added to the Gradle folder in the root directory of your project, using the <a href="https://toml.io/en/?ref=fampay.in">TOML</a> configuration format. While there are other ways to declare dependencies in Gradle without using the TOML file, using the Version Catalog with a TOML file can help to centralise and simplify your dependency management.</p><p>The TOML file will look something like this.</p><p><em><strong>gradle/libs.versions.toml</strong></em></p><pre><code>[versions]
+androidxActivity = "1.6.1"
+androidxCamera = "1.1.0"
+androidxCompose-runtime = "1.3.1"
+
+[libraries]
+androidxActivity = { module = "androidx.activity:activity", version.ref = "androidx-activity" }
+androidxActivityCompose = { module = "androidx.activity:activity-compose", version.ref = "androidx-activity" }
+androidxActivityKtx = { module = "androidx.activity:activity-ktx", version.ref = "androidx-activity" }
+
+[plugins]
+android = "android:7.3.1"
+androidLibrary = "android-library:7.3.1"
+
+[bundles]
+testDependencies = ["junit-jupiter", "junit-engine"]
+</code></pre><p><em><strong>build.gradle</strong></em></p><pre><code>dependencies {
+implementation libs.androidxActivityCompose
+}
+</code></pre><p>That’s it!</p><h3 id="why-did-we-decide-to-go-ahead-with-version-catalogs"><strong>Why did we decide to go ahead with Version Catalogs?</strong></h3><ul><li>Standardisation and performance</li><li>You can declare a group of dependencies using a single line in any module by using Bundles</li><li>Supported and recommended by Gradle</li><li>Stable release is out</li><li>The setup is simple</li><li>Android Giraffe allows easy navigation from Gradle files to the TOML file with Version Catalog</li><li>Autocompletion is available on Android Giraffe</li></ul><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/1600/1*ivqtkW5FXIGYLERe1CYl8w.png" class="kg-image" alt="https://cdn-images-1.medium.com/max/1600/1*ivqtkW5FXIGYLERe1CYl8w.png" loading="lazy"></figure><ul><li>Highlight (Android Giraffe onwards)</li></ul><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/1600/1*VeBwKIh6vDHW-N0GaLrxow.png" class="kg-image" alt="https://cdn-images-1.medium.com/max/1600/1*VeBwKIh6vDHW-N0GaLrxow.png" loading="lazy"></figure><ul><li>In Android Giraffe, you can edit variables you’ve defined there through the <strong>Project Structure</strong> dialog <strong>Variables</strong> view (<strong>File &gt; Project Structure &gt; Variables</strong>) in Android Studio</li></ul><figure class="kg-card kg-image-card"><img src="https://cdn-images-1.medium.com/max/1600/1*KhvurcmxU7yMLQavCZm4xw.png" class="kg-image" alt="https://cdn-images-1.medium.com/max/1600/1*KhvurcmxU7yMLQavCZm4xw.png" loading="lazy"></figure><h3 id="challenges-you-may-face">Challenges you may face</h3><ul><li>Migration might get hectic, especially for larger projects</li><li>Getting accustomed to a TOML file</li><li>The need to use <a href="https://docs.gradle.org/current/userguide/dependency_management_terminology.html?ref=fampay.in#sub::terminology_platform">Platform</a> to control transitive versions as is mentioned specifically by Gradle</li><li>Dependabot support is not yet available, but possible in the near future, creating the need to get familiar with third-party libraries like <strong><a href="https://github.com/renovatebot/renovate?ref=fampay.in">RenovateBot</a></strong> for now</li><li>Possible bugs are on the way since it is still in its early stages, but stable</li><li>AutoComplete and Navigation features are not yet supported in stable Android Studio releases. To access these features, you need to install the latest Android Studio Griffin, which is a Canary version.</li></ul><h3 id="who%E2%80%99s-using-version-catalogs"><strong>Who’s using Version Catalogs?</strong></h3><p>We found that some renowned companies such as <strong>Google, Square, Airbnb, Pinterest, CashApp,</strong> and <strong>Ktor</strong> are already using Version Catalogs in their projects. Some repositories that use Version Catalogs include:</p><ul><li><a href="http://github.com/androidx/androidx?ref=fampay.in">AndroidX</a></li><li><a href="http://github.com/square/okhttp?ref=fampay.in">OkHTTP</a></li><li><a href="http://github.com/square/retrofit?ref=fampay.in">Retrofit</a></li><li><a href="http://github.com/square/leakcanary?ref=fampay.in">LeakCanary</a></li><li><a href="http://github.com/cashapp/sqldelight?ref=fampay.in">SqlDelight</a></li><li><a href="http://github.com/ktorio/ktor?ref=fampay.in">Ktor</a></li></ul><h1 id="conclusion"><strong>Conclusion</strong></h1><p>Each approach we discussed has its tradeoffs in terms of automatic version updates, Kotlin DSL, standardisation, performance, and more. Ultimately, the best approach will depend on your project's specific requirements. Version Catalog seems to be a promising option as it's recommended and created by Gradle, has upcoming new features and optimisations, is simple to set up, and has IDE support from Android Studio. With reputed projects already adopting it, Version Catalog seems to have no significant pitfalls. However, choosing the right approach depends on your project and the tradeoffs you're willing to accept.</p><p><strong>To learn more about implementing Version Catalogs and advanced topics related to it, you can refer to this <a href="https://docs.gradle.org/current/userguide/platforms.html?ref=fampay.in#sub:central-declaration-of-dependencies">Documentation</a> on how to get started. </strong><br><strong>Happy coding!</strong><br><br>Written by Pranav Jayaraj</p>
+              </div>
+            </div>
+          </div>
+            <section class="m-subscribe-section">
+              <div class="l-wrapper in-post">
+                <div class="m-subscribe-section__content">
+                  <div class="m-subscribe-section__text">
+                    <h4 class="m-subscribe-section__title">Subscribe to our newsletter</h4>
+                    <p class="m-subscribe-section__description">
+                      Get the latest posts delivered right to your inbox.
+                    </p>
+                  </div>
+                  <div class="m-subscribe-section__form">
+                    
+<div class="m-subscribe-section__form">
+  <form data-members-form="subscribe" id="newsletter-form" class="m-subscribe-section__container">
+    <div class="m-subscribe__form">
+      <fieldset>
+        <label for="newsletter_input" class="sr-only">Your email address</label>
+        <input data-members-email id="newsletter-input" class="m-input in-subscribe-section" type="email"
+          placeholder="Your email address" required />
+      </fieldset>
+      <button id="newsletter_button" class="m-button primary block" type="submit">Subscribe</button>
+    </div>
+    <div class="m-subscribe__success">
+      <header class="m-heading no-margin">
+        <img src="/blog/assets/images/success.png?v=22080dfa02" alt="Success!" class="m-subscribe__success_icon">
+        <p class="m-heading__description in-newsletter-form">
+          Now check your inbox and click the link to confirm your subscription.
+        </p>
+      </header>
+    </div>
+    <p class="m-subscribe__invalid m-small-text">
+      Please enter a valid email address
+    </p>
+    <p class="m-subscribe__error m-small-text">
+      Oops! There was an error sending the email, please try later.
+    </p>
+  </form>
+</div>
+                  </div>
+                </div>
+              </div>
+            </section>
+          <section class="m-author">
+            <div class="m-author__content">
+              <div class="m-author__picture">
+                <a href="https://fampay.in/blog/author/fampay/" class="m-author-picture" aria-label="Author picture">
+                    <div style="background-image: url(https://fampay.in/blog/content/images/2020/11/logo.png);"></div>
+                </a>
+              </div>
+              <div class="m-author__info">
+                <h4 class="m-author__name">
+                  <a href="https://fampay.in/blog/author/fampay/">FamPay Team</a>
+                </h4>
+                <ul class="m-author-links">
+                    <li>
+                      <a href="https://fampay.in/" target="_blank" rel="noopener" aria-label="Website">
+                        <span class="icon-globe"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://facebook.com/fampay.in/" target="_blank" rel="noopener" aria-label="Facebook">
+                        <span class="icon-facebook"></span>
+                      </a>
+                    </li>
+                    <li>
+                      <a href="https://twitter.com/@fampayindia" target="_blank" rel="noopener" aria-label="Twitter">
+                        <span class="icon-twitter"></span>
+                      </a>
+                    </li>
+                </ul>
+              </div>
+            </div>
+          </section>
+          <section class="m-recommended">
+            <div class="l-wrapper in-recommended">
+              <h3 class="m-section-title in-recommended">Recommended for you</h3>
+              <div class="m-recommended-articles">
+                <div class="m-recommended-slider js-recommended-articles">
+                  
+    <div class="m-recommended-slider__item">
+    <article class="m-article-card post tag-culture tag-famsays tag-tech tag-community tag-growth">
+      <div class="m-article-card__picture lozad" data-background-image="/blog/content/images/size/w600/2020/12/Ayushi---blog.png">
+      <a href="/blog/life-of-an-intern-is-love/" class="m-article-card__picture-link" aria-label="Article"></a>
+      <a href="https://fampay.in/blog/author/ayushi/" class="m-article-card__author js-tooltip" aria-label="Authors" data-tippy-content="Posted by AYUSHI MAHENDRA ">
+          <div style="background-image: url(/blog/assets/images/default-avatar-square-small.jpg?v=22080dfa02);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="https://fampay.in/blog/tag/culture/" class="m-article-card__tag">Culture</a>
+      <a href="/blog/life-of-an-intern-is-love/" class="m-article-card__info-link">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Life of an Intern is Love 😍">
+            Life of an Intern is Love 😍
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>3 years ago</span>
+          <span>&bull;</span>
+          <span>10 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item">
+    <article class="m-article-card post tag-tech tag-famsays tag-product">
+      <div class="m-article-card__picture lozad" data-background-image="/blog/content/images/size/w600/2022/11/Group-2179.png">
+      <a href="/blog/implementing-an-in-memory-queue/" class="m-article-card__picture-link" aria-label="Article"></a>
+      <a href="https://fampay.in/blog/author/fampay/" class="m-article-card__author js-tooltip" aria-label="Authors" data-tippy-content="Posted by FamPay Team ">
+          <div style="background-image: url(/blog/content/images/size/w100/2020/11/logo.png);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="https://fampay.in/blog/tag/tech/" class="m-article-card__tag">Tech</a>
+      <a href="/blog/implementing-an-in-memory-queue/" class="m-article-card__info-link">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="Implementing an In-memory Queue 🧑‍💻">
+            Implementing an In-memory Queue 🧑‍💻
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>7 months ago</span>
+          <span>&bull;</span>
+          <span>6 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+    <div class="m-recommended-slider__item">
+    <article class="m-article-card post tag-teenpreneurs tag-teens tag-tech">
+      <div class="m-article-card__picture lozad" data-background-image="/blog/content/images/size/w600/2020/06/Frame-584.png">
+      <a href="/blog/how-a-pressing-problem-can-lead-to-technological-innovation/" class="m-article-card__picture-link" aria-label="Article"></a>
+      <a href="https://fampay.in/blog/author/shiv/" class="m-article-card__author js-tooltip" aria-label="Authors" data-tippy-content="Posted by Shiv Kampani ">
+          <div style="background-image: url(/blog/content/images/size/w100/2020/06/shiv.JPG);"></div>
+      </a>
+    </div>
+      <div class="m-article-card__info">
+        <a href="https://fampay.in/blog/tag/teenpreneurs/" class="m-article-card__tag">Teenpreneurs</a>
+      <a href="/blog/how-a-pressing-problem-can-lead-to-technological-innovation/" class="m-article-card__info-link">
+        <div>
+          <h2 class="m-article-card__title js-article-card-title " title="How a Pressing Problem can lead to Technological Innovation">
+            How a Pressing Problem can lead to Technological Innovation
+          </h2>
+        </div>
+        <div class="m-article-card__timestamp">
+          <span>4 years ago</span>
+          <span>&bull;</span>
+          <span>4 min read</span>
+        </div>
+      </a>
+    </div>
+  </article>
+    </div>
+                </div>
+              </div>
+            </div>
+          </section>
+      </div>
+    </article>
+  </main>
+</div>
+
+
+
+    
+<div class="m-search js-search">
+  <button class="m-icon-button outlined as-close-search js-close-search" aria-label="Close search">
+    <span class="icon-close"></span>
+  </button>
+  <div class="m-search__content">
+    <form class="m-search__form">
+      <fieldset>
+        <span class="icon-search m-search-icon"></span>
+        <input type="text" class="m-input in-search js-input-search" placeholder="Type to search" aria-label="Type to search">
+      </fieldset>
+    </form>
+    <div class="js-search-results hide"></div>
+    <p class="m-not-found align-center hide js-no-results">
+      No results for your search, please try with something else.
+    </p>
+  </div>
+</div>
+
+    
+<footer class="m-footer">
+  <div class="m-footer__content">
+    <p class="m-footer-copyright">
+      <span>UnRead by FamPay &copy; 2023</span>
+      <!-- <span>&nbsp; &bull; &nbsp;</span> -->
+      <!-- <span>Published with <a href="https://ghost.org" target="_blank" rel="noopener">Ghost</a></span> -->
+    </p>
+
+    <nav class="m-footer-social">
+      <a href="https://www.instagram.com/fampay.in/" target="_blank" rel="noopener" aria-label="Instagram">
+        <span class="icon-instagram"></span>
+      </a>
+        <a href="https://www.facebook.com/fampay.in" target="_blank" rel="noopener" aria-label="Facebook">
+          <span class="icon-facebook"></span>
+        </a>
+      <a href="https://www.linkedin.com/company/fampay/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <span class="icon-linkedin"></span>
+      </a>
+        <a href="https://twitter.com/fampayindia" target="_blank" rel="noopener" aria-label="Twitter">
+          <span class="icon-twitter"></span>
+        </a>
+      
+    </nav>
+    <!-- <p class="m-footer-copyright jslicense">
+      <a href="/blog/assets/html/javascript.html?v=22080dfa02" rel="jslicense">JavaScript license information</a>
+    </p> -->
+  </div>
+</footer>
+
+    <div class="m-alert success subscribe js-alert" data-notification="subscribe">
+  Great! You&#x27;ve successfully subscribed.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signup js-alert" data-notification="signup">
+  Great! Next, complete checkout for full access.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success signin js-alert" data-notification="signin">
+  Welcome back! You&#x27;ve successfully signed in.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+
+<div class="m-alert success checkout js-alert" data-notification="checkout">
+  Success! Your account is fully activated, you now have access to all content.
+  <button class="m-alert__close js-notification-close" aria-label="Close">
+    <span class="icon-close"></span>
+  </button>
+</div>
+    <script crossorigin="anonymous" src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserver%2CPromise%2CArray.prototype.includes%2CString.prototype.endsWith%2CString.prototype.startsWith%2CObject.assign%2CNodeList.prototype.forEach"></script>
+    <script defer src="/blog/assets/js/vendor/content-api.min.js?v=22080dfa02"></script>
+    <script defer src="/blog/assets/js/manifest.js?v=22080dfa02"></script>
+    <script defer src="/blog/assets/js/vendor.js?v=22080dfa02"></script>
+    <script defer src="/blog/assets/js/app.js?v=22080dfa02"></script>
+
+      <script defer src="/blog/assets/js/post.js?v=22080dfa02"></script>
+
+
+    <!--
+<script>
+  function initFreshChat() {
+    window.fcWidget.init({
+      token: "9a9a4163-c843-4a45-ba7b-5e64f1310af4",
+      host: "https://wchat.in.freshchat.com"
+    });
+  }
+  function initialize(i,t){var e;i.getElementById(t)?initFreshChat():((e=i.createElement("script")).id=t,e.async=!0,e.src="https://wchat.in.freshchat.com/js/widget.js",e.onload=initFreshChat,i.head.appendChild(e))}function initiateCall(){initialize(document,"freshchat-js-sdk")}window.addEventListener?window.addEventListener("load",initiateCall,!1):window.attachEvent("load",initiateCall,!1);
+</script>
+-->
+
+<!--     <script>
+      var APP_ID = 'ubqs56wi'
+      window.intercomSettings = {
+        app_id: APP_ID
+      }
+      ;(function () {
+        var w = window
+        var ic = w.Intercom
+        if (typeof ic === 'function') {
+          ic('reattach_activator')
+          ic('update', w.intercomSettings)
+        } else {
+          var d = document
+          var i = function () {
+            i.c(arguments)
+          }
+          i.q = []
+          i.c = function (args) {
+            i.q.push(args)
+          }
+          w.Intercom = i
+          var l = function () {
+            var s = d.createElement('script')
+            s.type = 'text/javascript'
+            s.async = true
+            s.src = 'https://widget.intercom.io/widget/' + APP_ID
+            var x = d.getElementsByTagName('script')[0]
+            x.parentNode.insertBefore(s, x)
+          }
+          if (document.readyState === 'complete') {
+            l()
+          } else if (w.attachEvent) {
+            w.attachEvent('onload', l)
+          } else {
+            w.addEventListener('load', l, false)
+          }
+        }
+      })()
+    </script> -->
+  </body>
+</html>
