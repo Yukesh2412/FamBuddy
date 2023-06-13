@@ -26,9 +26,9 @@ const Chat = ({}) => {
         },
       },
     ]);
-    const ws = new WebSocket('ws://192.168.1.19:3000');
+    // const ws = new WebSocket('ws://192.168.1.19:3000');
 
-    //const ws = new WebSocket('wss://fambuddy.onrender.com');
+    const ws = new WebSocket('wss://fambuddy.onrender.com');
     wsRef.current = ws;
     ws.onopen = () => {
       console.log('connected to websocket');
