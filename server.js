@@ -15,6 +15,10 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 const port = 3000 || process.env.PORT;
 
+var cron = require("node-cron");
+
+const client = new WebSocket("ws://localhost:3000");
+
 function QueryDB(query_prompt) {
   const url = process.env.PINECONE_URL;
   const headers = {
@@ -122,6 +126,15 @@ wss.on("connection", function connection(ws) {
       console.log(err);
     }
   });
+});
+
+client.on("pong", (data) => {
+  console.log("Received pong from server:", data);
+});
+
+cron.schedule("*/1 * * * *", () => {
+  // code to ping the websocket server
+  client.ping();
 });
 
 server.listen(port, function () {
