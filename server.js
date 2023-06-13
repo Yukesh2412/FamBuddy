@@ -17,7 +17,7 @@ const port = 3000 || process.env.PORT;
 
 var cron = require("node-cron");
 
-const client = new WebSocket("ws://localhost:3000");
+const client = new WebSocket("wss://fambuddy.onrender.com");
 
 function QueryDB(query_prompt) {
   const url = process.env.PINECONE_URL;
@@ -129,7 +129,7 @@ wss.on("connection", function connection(ws) {
 });
 
 client.on("pong", (data) => {
-  console.log("Received pong from server:", data);
+  console.log("NODE CRON - SELF PINGED");
 });
 
 cron.schedule("*/1 * * * *", () => {
