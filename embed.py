@@ -5,6 +5,7 @@ import openai
 import json
 from dotenv import load_dotenv
 load_dotenv()
+import re
 
 def DataExtraction(root_path: str) -> list:
     print(f'Extracting data from webpages at: {root_path}')
@@ -20,8 +21,8 @@ def DataExtraction(root_path: str) -> list:
                     title=title = soup.find("h1").get_text()
                 else:
                     title = ""
-                url = 'https://famapp.in' + path[len(root_path):]
-
+                page_path = 'https://famapp.in/blog' + path[len(root_path):]
+                url = re.sub("/index.html", "", page_path) 
                 pages.append({
                     'page_content': description,
                     'metadata': {
@@ -35,7 +36,7 @@ def DataExtraction(root_path: str) -> list:
 
 def TextExtraction(root_path: str) -> list:
     print(f'Extracting data from txt files at: {root_path}')
-    f = open('./cleandata.txt', 'r')
+    f = open(root_path, 'r')
     data = json.load(f)
     pages = []
     url = 'https://famapp.in/faqs'
@@ -99,13 +100,11 @@ def generate_file(data: dict, filename: str) -> None:
 
 def main():
     root_path = './blog'
-    data_from_textfile= TextExtraction('./cleandata.txt')
+    data_from_textfile= TextExtraction('./faq.txt')
     data_from_pages = DataExtraction(root_path)
     pages=data_from_textfile+data_from_pages
-    # print(pages_txt)
 
     docs, metadata = DataSplitting(pages)
-    # print(metadata)
 
     embeddings = GenerateEmbeddings(docs)
 

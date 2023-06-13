@@ -60,7 +60,7 @@ async function GPT_Api_Call(user_question, chunks, previous) {
     if (chunk.docs) {
       return {
         role: "user",
-        content: chunk.docs,
+        content: `Here is the reference link: ${chunk.url}. Here's the data : ${chunk.docs}`,
       };
     }
     return null;
@@ -97,9 +97,10 @@ async function GenerateResponse(user_question, previous) {
 
     // loop through the matches in the chunks response and get the metadata for each match
     for (let match of chunks_response.matches) {
-      let metadata = match.metadata || {};
+      var metadata = match.metadata || {};
       chunks.push(metadata);
     }
+    // console.log(metadata);
 
     const response = await GPT_Api_Call(user_question, chunks, previous);
 
