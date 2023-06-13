@@ -17,7 +17,7 @@ const port = 3000 || process.env.PORT;
 
 var cron = require("node-cron");
 
-const client = new WebSocket("wss://fambuddy.onrender.com");
+const client = new WebSocket("ws://localhost:3000");
 
 function QueryDB(query_prompt) {
   const url = process.env.PINECONE_URL;
