@@ -6,6 +6,7 @@ import {GiftedChat} from 'react-native-gifted-chat';
 const Chat = ({}) => {
   const [messages, setMessages] = useState([]);
   const [isTyping, setisTyping] = useState(false);
+  const [isLoading, setisLoading] = useState(true);
   var array = [];
   useEffect(() => {
     setMessages([
@@ -28,6 +29,7 @@ const Chat = ({}) => {
 
   ws.onopen = () => {
     console.log('connected to websocket');
+    setisLoading(false);
   };
 
   ws.onmessage = e => {
@@ -84,19 +86,25 @@ const Chat = ({}) => {
         <Text style={styles.textStyle}>Fam</Text>
         <Text style={styles.textBuddy}>Buddy</Text>
       </View>
-      <GiftedChat
-        // inverted={true}
-        messages={messages}
-        onSend={messages => onSend(messages)}
-        user={{
-          _id: 1,
-          name: 'User',
-        }}
-        isTyping={isTyping}
-        textInputProps={{
-          placeholder: 'Type a message....',
-        }}
-      />
+      {!isLoading ? (
+        <GiftedChat
+          // inverted={true}
+          messages={messages}
+          onSend={messages => onSend(messages)}
+          user={{
+            _id: 1,
+            name: 'User',
+          }}
+          isTyping={isTyping}
+          textInputProps={{
+            placeholder: 'Type a message....',
+          }}
+        />
+      ) : (
+        <View style={{alignSelf: 'center', marginVertical: '50%'}}>
+          <Text style={{fontSize: 20}}>Loading..</Text>
+        </View>
+      )}
     </View>
   );
 };
