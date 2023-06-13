@@ -46,7 +46,7 @@ function QueryDB(query_prompt) {
 function PromptEnhancement(question, previous) {
   const prompt = `
 Assume you are chatbot and you have answered to the previous question=${previous}, and understand the context of previous question and follow up question=${question}
-based on the above all data and context(refer the data it as Fampay FAQ), answer the follow up question, also provide the link of this information(if available) as "to find out more".
+based on the above all data and context(refer the data it as Fampay FAQ), answer ONLY to the follow up question, also provide the link of this information(if available) as "to find out more".
 Be supportive,problem solving, more human, friendly, humourous and easy. Use simple, precise and clear language and avoid jargon or technical terms. Be creative and funny with emojis.
 If the question is irrelevant to fampay and related information, then politefully ignore or change the topic
 
