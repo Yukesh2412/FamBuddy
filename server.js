@@ -130,7 +130,7 @@ wss.on("connection", function connection(ws) {
 
 // prevent render server from sleeping after 14 mins
 client.on("pong", (data) => {
-  console.log("NODE CRON - SELF PINGED");
+  console.log("NODE CRON - SELF PINGED", Date().toLocaleTimeString());
 });
 
 cron.schedule("*/10 * * * *", () => {
