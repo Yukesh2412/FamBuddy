@@ -26,9 +26,9 @@ const Chat = ({}) => {
         },
       },
     ]);
-    // const ws = new WebSocket('ws://192.168.1.19:3000');
+    const ws = new WebSocket('ws://192.168.1.19:3000');
 
-    const ws = new WebSocket('wss://fambuddy.onrender.com');
+    // const ws = new WebSocket('wss://fambuddy.onrender.com');
     wsRef.current = ws;
     ws.onopen = () => {
       console.log('connected to websocket');
@@ -58,14 +58,14 @@ const Chat = ({}) => {
       console.log('websocket error', e.message);
       setTimeout(() => {
         setisRetry(!isRetry);
-      }, 10000);
+      }, 2000);
     };
 
     ws.onclose = e => {
       console.log('websocket closed', e.code, e.reason);
       setTimeout(() => {
         setisRetry(!isRetry);
-      }, 3000);
+      }, 2000);
     };
     return () => {
       ws.close();
