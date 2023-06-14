@@ -17,7 +17,7 @@ const port = 3000 || process.env.PORT;
 
 var cron = require("node-cron");
 
-const client = new WebSocket("ws://localhost:3000");
+// const client = new WebSocket("ws://localhost:3000");
 
 function QueryDB(query_prompt) {
   const url = process.env.PINECONE_URL;
@@ -129,14 +129,14 @@ wss.on("connection", function connection(ws) {
 });
 
 // prevent render server from sleeping after 14 mins
-client.on("pong", (data) => {
-  console.log("NODE CRON - SELF PINGED");
-});
+// client.on("pong", (data) => {
+//   console.log("NODE CRON - SELF PINGED");
+// });
 
-cron.schedule("*/12 * * * *", () => {
-  client.ping();
-});
+// cron.schedule("*/12 * * * *", () => {
+//   client.ping();
+// });
 
-server.listen(port, function () {
-  console.log(`Server is listening on ${port}!`);
-});
+// server.listen(port, function () {
+//   console.log(`Server is listening on ${port}!`);
+// });
