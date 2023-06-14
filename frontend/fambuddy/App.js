@@ -1,5 +1,5 @@
 import React, {useEffect, useCallback, useState, useRef} from 'react';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text, StyleSheet, ActivityIndicator} from 'react-native';
 
 import {GiftedChat} from 'react-native-gifted-chat';
 
@@ -26,9 +26,9 @@ const Chat = ({}) => {
         },
       },
     ]);
-    const ws = new WebSocket('ws://192.168.1.19:3000');
+    // const ws = new WebSocket('ws://192.168.1.19:3000');
 
-    // const ws = new WebSocket('wss://fambuddy.onrender.com');
+    const ws = new WebSocket('wss://fambuddy.onrender.com');
     wsRef.current = ws;
     ws.onopen = () => {
       console.log('connected to websocket');
@@ -115,7 +115,10 @@ const Chat = ({}) => {
         />
       ) : (
         <View style={{alignSelf: 'center', marginVertical: '50%'}}>
-          <Text style={{fontSize: 20}}>Connecting to FamBuddy..</Text>
+          <Text style={{fontSize: 20, marginVertical: 10}}>
+            Connecting to FamBuddy..
+          </Text>
+          <ActivityIndicator size="large" />
         </View>
       )}
     </View>
