@@ -10,6 +10,8 @@
     "nodemon": "^2.0.22",
     "openai": "^3.2.1",
     "serve-handler": "^6.1.5",
-    "ws": "^8.13.0"
+    "ws": "^8.13.0",
+    "http-proxy-middleware": "^1.0.6"
+
   }
 }
