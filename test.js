@@ -10,12 +10,14 @@ const baseUrl = 'https://ags.hcm.bi';
 const apiProxy = createProxyMiddleware({ target: baseUrl, changeOrigin: true });
 app.use(apiProxy);
 
-// Optional: Add a route to specifically handle requests for the home page
-// app.get('/', (req, res) => {
-//   res.redirect(baseUrl);
-// });
+// Optional: Add logging for debugging
+app.use((req, res, next) => {
+  console.log('Request:', req.method, req.originalUrl);
+  next();
+});
 
 const port = 3000 || process.env.PORT;
 app.listen(port, () => {
   console.log(`Proxy server is running on port ${port}`);
 });
+
